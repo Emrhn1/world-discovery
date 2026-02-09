@@ -1,0 +1,31 @@
+{
+    "id": "cappadocia",
+    "name": "Cappadocia",
+    "countryId": "TR",
+    "coords": [
+        38.6431,
+        34.8289
+    ],
+    "type": "nature",
+    "teaser": "Where fairy chimneys touch the clouds",
+    "shortStory": "Millions of years of volcanic eruptions and erosion carved this surreal landscape. Ancient civilizations carved entire cities into the soft rock, while today hot air balloons drift through dawn skies over this otherworldly terrain.",
+    "bullets": [
+        "Underground cities sheltered 20,000 people",
+        "Fairy chimneys formed over millions of years",
+        "Hot air balloon capital of the world",
+        "Early Christians carved hidden churches here"
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?w=1920&q=80",
+            "alt": "Hot air balloons over Cappadocia at sunrise"
+        },
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1570939274717-7eda259b50ed?w=1920&q=80",
+            "alt": "Fairy chimneys rock formations"
+        }
+    ],
+    "ambience": "nature"
+}

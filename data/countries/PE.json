@@ -1,0 +1,18 @@
+{
+    "id": "PE",
+    "name": "Peru",
+    "coords": [
+        -9.19,
+        -75.0152
+    ],
+    "teaser": "Lost cities in the clouds",
+    "ambience": "/sounds/ambient/peru-ambient.mp3",
+    "places": [
+        "machu-picchu",
+        "nazca-lines",
+        "cusco",
+        "amazon-basin"
+    ],
+    "flag": "🇵🇪",
+    "dramaticIntro": "High in the Andes, the Inca built a kingdom that touched the sky. Their stonework holds secrets that time cannot erode."
+}

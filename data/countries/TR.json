@@ -1,0 +1,18 @@
+{
+    "id": "TR",
+    "name": "Türkiye",
+    "coords": [
+        39.9334,
+        32.8597
+    ],
+    "teaser": "Two continents, endless stories",
+    "ambience": "/sounds/ambient/turkey-ambient.mp3",
+    "places": [
+        "topkapi",
+        "hagia-sophia",
+        "cappadocia",
+        "ephesus"
+    ],
+    "flag": "🇹🇷",
+    "dramaticIntro": "These lands have witnessed empires rise and fall. Where East meets West, ancient secrets whisper through marble halls."
+}

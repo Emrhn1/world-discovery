@@ -1,0 +1,31 @@
+{
+    "id": "topkapi",
+    "name": "Topkapi Palace",
+    "countryId": "TR",
+    "coords": [
+        41.0115,
+        28.9833
+    ],
+    "type": "historical",
+    "teaser": "Where sultans dreamed empires into being",
+    "shortStory": "For 400 years, this palace was the heart of Ottoman power. Within its walls, sultans ruled three continents, treasures from across the world gathered, and the fate of empires was decided in whispered councils.",
+    "bullets": [
+        "Home to 36 Ottoman sultans",
+        "The Imperial Treasury holds legendary jewels",
+        "The Harem housed over 300 rooms",
+        "Sacred relics of Prophet Muhammad rest here"
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1603634406031-f4c8c8f4c8a2?w=1920&q=80",
+            "alt": "Topkapi Palace courtyard with ornate tiles"
+        },
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1560613021-60ea76c9dc60?w=1920&q=80",
+            "alt": "Bosphorus view from Topkapi Palace"
+        }
+    ],
+    "ambience": "ancient"
+}

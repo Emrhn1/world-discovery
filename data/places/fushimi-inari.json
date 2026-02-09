@@ -1,0 +1,31 @@
+{
+    "id": "fushimi-inari",
+    "name": "Fushimi Inari Shrine",
+    "countryId": "JP",
+    "coords": [
+        34.9671,
+        135.7727
+    ],
+    "type": "historical",
+    "teaser": "Ten thousand gates to the realm of foxes",
+    "shortStory": "Since 711 AD, pilgrims have walked these vermillion tunnels up Mount Inari. Each of the 10,000 torii gates was donated by a business seeking prosperity, creating a path that blurs the line between the mortal and spirit worlds.",
+    "bullets": [
+        "Over 10,000 vermillion torii gates",
+        "Dedicated to Inari, the god of rice",
+        "Fox statues guard the sacred path",
+        "The full hike takes 2-3 hours"
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=1920&q=80",
+            "alt": "Tunnel of vermillion torii gates"
+        },
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&q=80",
+            "alt": "Fushimi Inari shrine entrance"
+        }
+    ],
+    "ambience": "ancient"
+}

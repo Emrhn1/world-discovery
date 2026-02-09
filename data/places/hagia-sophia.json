@@ -1,0 +1,242 @@
+{
+    "id": "hagia-sophia",
+    "name": "Hagia Sophia",
+    "countryId": "TR",
+    "coords": [41.0086, 28.9802],
+    "type": "historical",
+    "teaser": "Where heaven met earth in stone and light",
+    "shortStory": "For 1,500 years, this dome has inspired awe. It was the world's largest cathedral for a millennium, then a mosque, then a museum, now a mosque again. Its mosaics whisper of Byzantine emperors while minarets reach for Ottoman skies.",
+    "bullets": [
+        "The floating dome defied ancient engineering",
+        "Byzantine mosaics hidden and revealed",
+        "A bridge between two faiths",
+        "World's largest cathedral for 1,000 years",
+        "The weeping column grants wishes",
+        "Viking graffiti hides in the marble"
+    ],
+    "discoveries": [
+        {
+            "hook": "The dome appears to float on light itself.",
+            "story": "Byzantine architects created 40 windows at the dome's base, flooding the interior with light. Visitors described it as 'suspended from heaven by a golden chain.' No pillars support it - it hangs 55 meters above the floor.",
+            "type": "engineering-mystery",
+            "isHero": true,
+            "position": { "top": "28%", "left": "38%" }
+        },
+        {
+            "hook": "Hidden faces watched from the walls for 500 years.",
+            "story": "When the Ottomans converted it to a mosque, they covered Christian mosaics with plaster. For centuries, Byzantine emperors and angels slept beneath white walls, only revealed when restoration began in 1934.",
+            "type": "hidden-detail",
+            "position": { "top": "45%", "left": "62%" }
+        },
+        {
+            "hook": "Two faiths share the same sacred space.",
+            "story": "Today, Islamic calligraphy hangs beside Christian mosaics. Minarets frame Byzantine architecture. It is one of the rare places where two great religions coexist in stone and gold.",
+            "type": "cultural-shift",
+            "position": { "top": "55%", "left": "30%" }
+        },
+        {
+            "hook": "For 1,000 years, nothing on Earth stood taller.",
+            "story": "From 537 AD until 1520, Hagia Sophia's dome was the largest in the world. It took the Ottoman architect Sinan a lifetime to match it, and even then he fell short by mere centimeters.",
+            "type": "turning-point",
+            "position": { "top": "65%", "left": "72%" }
+        },
+        {
+            "hook": "Touch the weeping column and make a wish.",
+            "story": "One marble column constantly weeps with moisture. Legend says Emperor Justinian cured his headache by leaning against it. For 1,500 years, visitors have inserted their thumbs into a hole worn smooth by millions of wishes. Scientists still cannot fully explain why this single column remains always damp.",
+            "type": "hidden-detail",
+            "isHidden": true,
+            "hiddenTrigger": "long-hover",
+            "position": { "top": "50%", "left": "18%" }
+        },
+        {
+            "hook": "A Viking warrior scratched 'Halvdan was here' into the marble.",
+            "story": "In the upper gallery, faint runic graffiti reads 'Halvdan carved these runes.' A Norse warrior in the Byzantine emperor's Varangian Guard left his mark over 1,000 years ago — ancient vandalism that became priceless history. It was only discovered in 1964.",
+            "type": "historical-insight",
+            "isHidden": true,
+            "hiddenTrigger": "chain",
+            "chainRequires": [0, 1],
+            "position": { "top": "35%", "left": "82%" }
+        }
+    ],
+    "scenes": [
+        {
+            "id": "exterior",
+            "title": "Exterior — The Silhouette",
+            "description": "Six minarets pierce the sky around the massive dome, a skyline that has defined Istanbul for 1,500 years.",
+            "src": "https://images.unsplash.com/photo-1558005137-d9619a5c539f?w=1920&q=80",
+            "alt": "Hagia Sophia exterior at sunset with minarets",
+            "hotspots": [
+                {
+                    "id": "ext-dome",
+                    "position": { "top": "22%", "left": "42%" },
+                    "icon": "🏛️",
+                    "title": "The Great Dome",
+                    "description": "Spanning 31.2 meters, this dome was the largest in the world for nearly a thousand years. It collapsed twice from earthquakes and was rebuilt each time — slightly higher than before.",
+                    "type": "engineering-mystery"
+                },
+                {
+                    "id": "ext-minarets",
+                    "position": { "top": "15%", "left": "72%" },
+                    "icon": "🕌",
+                    "title": "The Minarets",
+                    "description": "The four minarets were added by different Ottoman sultans over two centuries. The earliest is a simple brick tower; the latest are elegant pencil-shaped masterpieces by architect Sinan.",
+                    "type": "historical-insight"
+                },
+                {
+                    "id": "ext-buttresses",
+                    "position": { "top": "50%", "left": "28%" },
+                    "icon": "🧱",
+                    "title": "Byzantine Buttresses",
+                    "description": "After the dome collapsed in 558 AD, massive flying buttresses were added to absorb the lateral thrust. These heavy supports became the architectural DNA that later cathedrals would copy.",
+                    "type": "engineering-mystery"
+                },
+                {
+                    "id": "ext-garden",
+                    "position": { "top": "65%", "left": "60%" },
+                    "icon": "🌳",
+                    "title": "The Sultan's Garden",
+                    "description": "The courtyard once held a grand fountain for ritual ablutions. Five massive gates led into the building — the central Imperial Gate was reserved solely for the emperor.",
+                    "type": "cultural-shift"
+                }
+            ]
+        },
+        {
+            "id": "interior-dome",
+            "title": "Interior — The Floating Dome",
+            "description": "Step inside and look up: the dome appears to hover on a ring of divine light.",
+            "src": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1920&q=80",
+            "alt": "Hagia Sophia interior dome with golden light streaming through windows",
+            "hotspots": [
+                {
+                    "id": "int-dome-windows",
+                    "position": { "top": "18%", "left": "50%" },
+                    "icon": "💡",
+                    "title": "The 40 Windows of Heaven",
+                    "description": "Forty arched windows ring the dome's base. Byzantine architect Anthemius placed them to create a continuous curtain of light, making the heavy dome appear weightless — 'as if suspended from heaven by a golden chain,' wrote historian Procopius.",
+                    "type": "engineering-mystery"
+                },
+                {
+                    "id": "int-calligraphy",
+                    "position": { "top": "40%", "left": "25%" },
+                    "icon": "📿",
+                    "title": "Islamic Calligraphy Medallions",
+                    "description": "Eight enormous circular medallions display the names of Allah, Muhammad, and the first caliphs in golden Arabic calligraphy. Added during Ottoman renovations, they are among the largest examples of Islamic calligraphy in the world.",
+                    "type": "cultural-shift"
+                },
+                {
+                    "id": "int-pendentives",
+                    "position": { "top": "30%", "left": "72%" },
+                    "icon": "👼",
+                    "title": "The Seraphim Angels",
+                    "description": "Four six-winged seraphim guard the dome from the pendentives. Under Ottoman rule their faces were covered with golden stars. Only two were uncovered during 1934 restorations — the others remain veiled to this day.",
+                    "type": "hidden-detail"
+                },
+                {
+                    "id": "int-marble",
+                    "position": { "top": "60%", "left": "45%" },
+                    "icon": "🪨",
+                    "title": "Marble From Lost Empires",
+                    "description": "The columns and panels were plundered from ancient temples across the empire: green porphyry from Egypt, purple marble from Ephesus, golden stone from Syria. Each slab was matched like butterfly wings for symmetry.",
+                    "type": "historical-insight"
+                }
+            ]
+        },
+        {
+            "id": "interior-mosaics",
+            "title": "Interior — Hidden Mosaics",
+            "description": "Centuries-old gold mosaics emerge from beneath Ottoman plaster, witnesses to an empire of faith and power.",
+            "src": "https://images.unsplash.com/photo-1604928141064-207b6de1e7d4?w=1920&q=80",
+            "alt": "Byzantine mosaic of Christ Pantocrator in gold and blue",
+            "hotspots": [
+                {
+                    "id": "mos-deesis",
+                    "position": { "top": "25%", "left": "45%" },
+                    "icon": "✝️",
+                    "title": "The Deesis Mosaic",
+                    "description": "Created around 1261, this masterpiece depicts Christ flanked by the Virgin Mary and John the Baptist. Art historians consider the face of Christ here the finest example of Byzantine art ever created — the expression shifts between mercy and sorrow depending on your angle.",
+                    "type": "turning-point"
+                },
+                {
+                    "id": "mos-empress",
+                    "position": { "top": "45%", "left": "68%" },
+                    "icon": "👑",
+                    "title": "Empress Zoe's Mosaic",
+                    "description": "This mosaic was altered three times — each time Empress Zoe took a new husband, the face of the emperor beside her was chipped away and replaced. You can still see where the plaster was patched to accommodate her third spouse.",
+                    "type": "hidden-detail"
+                },
+                {
+                    "id": "mos-imperial",
+                    "position": { "top": "55%", "left": "30%" },
+                    "icon": "⚜️",
+                    "title": "The Imperial Gate Mosaic",
+                    "description": "Above the emperor's private entrance, Emperor Leo VI kneels before an enthroned Christ. But why is the emperor prostrate? Historians believe it commemorates Leo begging forgiveness for his controversial fourth marriage — a scandal that nearly split the Byzantine Church.",
+                    "type": "historical-insight"
+                },
+                {
+                    "id": "mos-crux",
+                    "position": { "top": "35%", "left": "18%" },
+                    "icon": "🔲",
+                    "title": "Ghost Crosses",
+                    "description": "Look carefully at certain walls: faint cross outlines appear where mosaics were stripped away. These 'ghost crosses' mark where Byzantine artwork was plastered over — some iconography was too sacred to destroy entirely, so Ottoman craftsmen simply hid it.",
+                    "type": "hidden-detail"
+                }
+            ]
+        }
+    ],
+    "timelinePhotos": [
+        {
+            "era": "Byzantine Cathedral",
+            "year": 537,
+            "src": "https://www.historypin.org/services/thumb/phid/1189376/dim/1000x1000/c/1714157055",
+            "description": "Commissioned by Emperor Justinian I, Hagia Sophia opens as the world's largest cathedral. According to legend, Justinian exclaimed 'Solomon, I have surpassed thee!' upon seeing the completed dome."
+        },
+        {
+            "era": "Ottoman Mosque",
+            "year": 1453,
+            "src": "https://c.files.bbci.co.uk/448B/production/_112574571_untitled.png",
+            "description": "After Sultan Mehmed II conquered Constantinople, he immediately converted Hagia Sophia into a mosque. Minarets were added, Christian mosaics were plastered over, and Islamic calligraphy adorned the walls."
+        },
+        {
+            "era": "Atatürk's Museum",
+            "year": 1934,
+            "src": "https://img.piri.net/mnresize/720/-/resim/upload/2020/06/10/12/48/d3c39468aya2.jpg",
+            "description": "Mustafa Kemal Atatürk secularized the building, turning it into a museum. Restoration began to uncover lost Byzantine mosaics. For 86 years, it served as a symbol of cultural bridge between East and West."
+        },
+        {
+            "era": "Mosque Again",
+            "year": 2020,
+            "src": "https://www.kutsalkitap.org/wp-content/uploads/2019/04/hagia-sophia-optimized.jpg",
+            "description": "In July 2020, Turkey's Council of State revoked the museum status, and Hagia Sophia was reconverted into a mosque. Mosaics are now covered with curtains during prayer times, continuing its story of transformation."
+        }
+    ],
+    "zones": [
+        {
+            "name": "Main Complex",
+            "coords": [[41.0086, 28.9799], [41.0088, 28.9805], [41.0084, 28.9807], [41.0082, 28.9801]],
+            "color": "#eab308"
+        },
+        {
+            "name": "Hippodrome",
+            "coords": [[41.0060, 28.9750], [41.0070, 28.9760], [41.0055, 28.9770], [41.0045, 28.9760]],
+            "color": "#3b82f6"
+        },
+        {
+            "name": "Topkapi Gardens",
+            "coords": [[41.0110, 28.9830], [41.0120, 28.9840], [41.0130, 28.9820]],
+            "color": "#22c55e"
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=1920&q=80",
+            "alt": "The magnificent dome interior with golden light"
+        },
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1558005137-d9619a5c539f?w=1920&q=80",
+            "alt": "Hagia Sophia exterior at sunset"
+        }
+    ],
+    "ambience": "ancient"
+}

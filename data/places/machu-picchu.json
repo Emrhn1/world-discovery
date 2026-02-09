@@ -1,0 +1,77 @@
+{
+    "id": "machu-picchu",
+    "name": "Machu Picchu",
+    "countryId": "PE",
+    "coords": [
+        -13.1631,
+        -72.545
+    ],
+    "type": "historical",
+    "teaser": "The lost city that touched the clouds",
+    "shortStory": "Hidden for centuries above the Urubamba River, this Incan citadel was rediscovered in 1911. Built in the 15th century without mortar, wheels, or iron tools, it stands as testament to the incredible engineering of the Inca Empire.",
+    "bullets": [
+        "Never discovered by Spanish conquistadors",
+        "Built without mortar - stones fit perfectly",
+        "Located 2,430 meters above sea level",
+        "Most structures align with astronomical events",
+        "An earthquake-proof hidden technique",
+        "A secret trail only the Inca knew"
+    ],
+    "discoveries": [
+        {
+            "hook": "The Spanish never found it. The jungle did.",
+            "story": "While conquistadors destroyed Incan cities across Peru, Machu Picchu remained untouched. Not because it was hidden by warriors, but because the jungle swallowed it whole. For 400 years, only local farmers knew it existed.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": { "top": "30%", "left": "35%" }
+        },
+        {
+            "hook": "Not a single drop of mortar holds these walls.",
+            "story": "Incan stonemasons cut granite blocks so precisely that a knife blade cannot fit between them. They had no iron tools, no wheels, no written language - yet their walls have survived 500 years of earthquakes.",
+            "type": "engineering-mystery",
+            "position": { "top": "45%", "left": "60%" }
+        },
+        {
+            "hook": "The Intihuatana stone captured the sun.",
+            "story": "This carved rock served as an astronomical clock. On the equinoxes, the sun sits directly above it, casting no shadow. The Inca believed it literally 'tied the sun' to the earth, preventing it from escaping.",
+            "type": "cultural-shift",
+            "position": { "top": "55%", "left": "28%" }
+        },
+        {
+            "hook": "It was abandoned after just 100 years.",
+            "story": "Built around 1450, Machu Picchu was suddenly deserted during the Spanish conquest. Some theories suggest disease, others civil war. The Inca left no written records - only silent stones remain.",
+            "type": "turning-point",
+            "position": { "top": "38%", "left": "75%" }
+        },
+        {
+            "hook": "The walls dance during earthquakes.",
+            "story": "Incan builders invented 'ashlar masonry' — stones cut to bounce and fall back into place during tremors. The entire city is designed to absorb seismic energy. When an earthquake hits, the stones literally dance, then resettle. Modern engineers still study this technique.",
+            "type": "engineering-mystery",
+            "isHidden": true,
+            "hiddenTrigger": "long-hover",
+            "position": { "top": "65%", "left": "45%" }
+        },
+        {
+            "hook": "A hidden trail connected Machu Picchu to the stars.",
+            "story": "The Inca Trail wasn't just a road — it was an astronomical map. Waypoints aligned with solstice sunrises, and the trail's highest pass framed the Milky Way perfectly on the winter solstice. The journey itself was a sacred ritual, not just transportation.",
+            "type": "cultural-shift",
+            "isHidden": true,
+            "hiddenTrigger": "chain",
+            "chainRequires": [2, 3],
+            "position": { "top": "22%", "left": "52%" }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1526392060635-9d6019884377?w=1920&q=80",
+            "alt": "Machu Picchu at sunrise with mist"
+        },
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?w=1920&q=80",
+            "alt": "Llama overlooking Machu Picchu"
+        }
+    ],
+    "ambience": "nature"
+}

@@ -1,0 +1,74 @@
+{
+    "id": "colosseum",
+    "name": "Colosseum",
+    "countryId": "IT",
+    "coords": [41.8902, 12.4922],
+    "type": "historical",
+    "teaser": "Where gladiators wrote history in blood and sand",
+    "shortStory": "The greatest amphitheater ever built held 50,000 spectators who watched gladiatorial combat, wild animal hunts, and mock naval battles. For 400 years, this arena was the beating heart of Roman entertainment and imperial power.",
+    "bullets": [
+        "Could hold 50,000 spectators",
+        "Built in just 8 years",
+        "Had a retractable awning system",
+        "Underground chambers held wild animals",
+        "Free entry and free food for all citizens",
+        "Thumbs up actually meant death"
+    ],
+    "discoveries": [
+        {
+            "hook": "They flooded the arena to stage naval battles.",
+            "story": "In its early years, the Colosseum floor could be flooded to recreate sea battles with actual ships. Thousands watched as prisoners fought and drowned for entertainment. The engineering required was extraordinary.",
+            "type": "engineering-mystery",
+            "isHero": true,
+            "position": { "top": "30%", "left": "45%" }
+        },
+        {
+            "hook": "A hidden world existed beneath the sand.",
+            "story": "The hypogeum - an underground labyrinth of tunnels, cages, and elevators - allowed animals and gladiators to appear as if by magic through trapdoors. 80 vertical shafts could lift props and beasts into the arena.",
+            "type": "hidden-detail",
+            "position": { "top": "55%", "left": "25%" }
+        },
+        {
+            "hook": "80,000 Jewish slaves built it in 8 years.",
+            "story": "After the siege of Jerusalem in 70 AD, Emperor Vespasian brought tens of thousands of Jewish prisoners to Rome. They quarried and carried 100,000 cubic meters of travertine stone to build this monument to their defeat.",
+            "type": "turning-point",
+            "position": { "top": "40%", "left": "70%" }
+        },
+        {
+            "hook": "A canvas the size of a football field shaded the crowd.",
+            "story": "The velarium was a retractable awning operated by 1,000 sailors. Ropes ran through 240 masts to unfurl a canvas that protected spectators from the Roman sun - ancient air conditioning for 50,000 people.",
+            "type": "engineering-mystery",
+            "position": { "top": "25%", "left": "60%" }
+        },
+        {
+            "hook": "Everything was free — bread, wine, and blood.",
+            "story": "Emperors used the Colosseum for political control. Entry was free. Food was free. Lottery tickets for prizes were thrown into the crowd. The phrase 'bread and circuses' was born here — entertainment as a weapon against revolution.",
+            "type": "cultural-shift",
+            "isHidden": true,
+            "hiddenTrigger": "double-click",
+            "position": { "top": "62%", "left": "50%" }
+        },
+        {
+            "hook": "Thumbs up didn't mean what you think.",
+            "story": "Hollywood got it wrong. Roman spectators used 'pollice verso' — a turned thumb — to signal death. But historians now believe 'thumbs up' actually meant 'slit his throat,' while a hidden thumb meant mercy. The gesture of approval was invented by mistranslation.",
+            "type": "historical-insight",
+            "isHidden": true,
+            "hiddenTrigger": "chain",
+            "chainRequires": [0, 2],
+            "position": { "top": "48%", "left": "15%" }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1920&q=80",
+            "alt": "Colosseum interior at golden hour"
+        },
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1555992828-ca4dbe41d294?w=1920&q=80",
+            "alt": "Colosseum exterior at night"
+        }
+    ],
+    "ambience": "ancient"
+}

@@ -1,0 +1,18 @@
+{
+    "id": "EG",
+    "name": "Egypt",
+    "coords": [
+        26.8206,
+        30.8025
+    ],
+    "teaser": "Monuments to eternity",
+    "ambience": "/sounds/ambient/egypt-ambient.mp3",
+    "places": [
+        "giza-pyramids",
+        "karnak",
+        "valley-of-kings",
+        "alexandria"
+    ],
+    "flag": "🇪🇬",
+    "dramaticIntro": "Beneath the desert sun, pharaohs built monuments that would outlast memory itself. The Nile still carries their stories."
+}

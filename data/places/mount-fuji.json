@@ -1,0 +1,31 @@
+{
+    "id": "mount-fuji",
+    "name": "Mount Fuji",
+    "countryId": "JP",
+    "coords": [
+        35.3606,
+        138.7274
+    ],
+    "type": "nature",
+    "teaser": "Japan's sacred mountain, perfect in silence",
+    "shortStory": "This perfectly symmetrical volcano has inspired artists, poets, and pilgrims for centuries. At 3,776 meters, it is Japan's highest peak and most sacred mountain, visible from Tokyo on clear days and climbed by 300,000 people each year.",
+    "bullets": [
+        "Last erupted in 1707",
+        "UNESCO World Heritage Site since 2013",
+        "300,000 climb it annually",
+        "Visible from Tokyo, 100km away"
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=1920&q=80",
+            "alt": "Mount Fuji with cherry blossoms"
+        },
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1578271887552-5ac3a72752bc?w=1920&q=80",
+            "alt": "Mount Fuji reflected in lake at sunrise"
+        }
+    ],
+    "ambience": "nature"
+}

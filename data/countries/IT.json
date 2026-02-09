@@ -1,0 +1,18 @@
+{
+    "id": "IT",
+    "name": "Italy",
+    "coords": [
+        41.8719,
+        12.5674
+    ],
+    "teaser": "Where art and history breathe",
+    "ambience": "/sounds/ambient/italy-ambient.mp3",
+    "places": [
+        "colosseum",
+        "pompeii",
+        "venice-canals",
+        "tuscany"
+    ],
+    "flag": "🇮🇹",
+    "dramaticIntro": "The eternal empire's heartbeat echoes through marble columns. Renaissance masters painted heaven on mortal ceilings."
+}

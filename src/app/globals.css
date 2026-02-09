@@ -1,27 +1,524 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Dark theme by default for cinematic feel */
+  --background: #0d0f13;
+  --foreground: #f7f7f8;
+
+  /* Accent colors */
+  --accent-gold: #efcc4d;
+  --accent-gold-dim: rgba(239, 204, 77, 0.3);
+
+  /* Overlay colors */
+  --overlay-dark: rgba(13, 15, 19, 0.85);
+  --overlay-medium: rgba(13, 15, 19, 0.6);
+
+  /* Glass effect */
+  --glass-bg: rgba(25, 28, 35, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Smooth scrolling with reduced motion support */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+@layer base {
+
+  /* Typography utilities */
+  .font-display {
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background: rgba(239, 204, 77, 0.3);
+    color: #ffffff;
+  }
+}
+
+@layer components {
+
+  /* Glass panel effect */
+  .glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+
+  /* Cinematic vignette overlay */
+  .vignette {
+    position: relative;
+  }
+
+  .vignette::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center,
+        transparent 0%,
+        transparent 50%,
+        rgba(0, 0, 0, 0.4) 100%);
+    pointer-events: none;
+  }
+
+  /* Grain texture overlay */
+  .grain {
+    position: relative;
+  }
+
+  .grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Dramatic text gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gold accent gradient */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #efcc4d 0%, #c99b1b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow button */
+  .btn-glow {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--accent-gold) 0%, transparent 50%);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    filter: blur(8px);
+  }
+
+  .btn-glow:hover::before {
+    opacity: 0.5;
+  }
+
+  /* Map container styles */
+  .map-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Hide Leaflet attribution initially, show on hover */
+  .leaflet-control-attribution {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+  }
+
+  .map-container:hover .leaflet-control-attribution {
+    opacity: 1;
+  }
+
+  /* Custom marker styles */
+  .place-marker {
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  .place-marker:hover {
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px var(--accent-gold));
+  }
+
+  .place-marker.learned {
+    filter: drop-shadow(0 0 6px rgba(45, 134, 89, 0.8));
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+
+  /* Animation delay utilities */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
+
+  /* Hide scrollbar utility */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   FOG OF WAR & AMBIENT REACTION STYLES
+═════════════════════════════════════════════ */
+
+/* Floating ambient particles */
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+    transform: translateY(-8vh) translateX(3px) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-45vh) translateX(-8px) scale(1.1);
+  }
+  90% {
+    opacity: 0.3;
+    transform: translateY(-85vh) translateX(12px) scale(0.6);
+  }
+  100% {
+    transform: translateY(-100vh) translateX(5px) scale(0);
+    opacity: 0;
+  }
+}
+
+.animate-float-particle {
+  animation: floatParticle linear infinite;
+  will-change: transform, opacity;
+}
+
+/* Hidden discovery shimmer - subtle hint */
+@keyframes shimmerPulse {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.6);
+    filter: blur(4px);
+  }
+  50% {
+    opacity: 0.25;
+    transform: translate(-50%, -50%) scale(1.3);
+    filter: blur(6px);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmerPulse 3s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* Linger progress ring for hidden discoveries */
+@keyframes lingerFill {
+  0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Enlightenment flash when all discoveries found */
+@keyframes enlightenmentFlash {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  30% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+
+.animate-enlightenment {
+  animation: enlightenmentFlash 2.5s ease-out forwards;
+}
+
+/* Discovery wave ripple from found hotspot */
+@keyframes discoveryWave {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.4;
+    border-width: 2px;
+  }
+  100% {
+    width: 600px;
+    height: 600px;
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+.animate-discovery-wave {
+  animation: discoveryWave 2s ease-out forwards;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Warm light rays from top */
+@keyframes lightRaySway {
+  0%, 100% { transform: rotate(-8deg) translateX(0); opacity: 0.06; }
+  50% { transform: rotate(4deg) translateX(20px); opacity: 0.12; }
+}
+
+.animate-light-ray {
+  animation: lightRaySway 8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Materialization effect for hidden discoveries */
+@keyframes materialize {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+    filter: blur(10px);
+  }
+  50% {
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0px);
+  }
+}
+
+.animate-materialize {
+  animation: materialize 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Scene warmth transition */
+.scene-ambient-0 { filter: brightness(0.15) saturate(0.6); }
+.scene-ambient-1 { filter: brightness(0.25) saturate(0.75) sepia(0.03); }
+.scene-ambient-2 { filter: brightness(0.35) saturate(0.85) sepia(0.05); }
+.scene-ambient-3 { filter: brightness(0.45) saturate(0.9) sepia(0.08); }
+.scene-ambient-4 { filter: brightness(0.55) saturate(1) sepia(0.1); }
+.scene-ambient-max { filter: brightness(0.65) saturate(1.1) sepia(0.05); }
+
+/* Fog dissolve transition */
+.fog-dissolve {
+  transition: opacity 2s ease-out;
+}
+
+/* Cursor glow for explore mode */
+.explore-cursor {
+  cursor: none;
+}
+
+/* Fog of War lantern glow on cursor */
+  .fog-lantern {
+    cursor: none;
+  }
+
+  .fog-lantern::after {
+    content: '';
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    background: radial-gradient(circle, rgba(239, 204, 77, 0.6) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    mix-blend-mode: screen;
+  }
+
+  /* Discovery flash keyframe */
+  @keyframes discovery-flash {
+    0% { opacity: 0; }
+    30% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+
+  .discovery-flash {
+    animation: discovery-flash 0.6s ease-out forwards;
+  }
+
+  /* Secret reveal shimmer */
+  @keyframes secret-shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .secret-shimmer {
+    background: linear-gradient(90deg, transparent 0%, rgba(168, 85, 247, 0.1) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: secret-shimmer 2s ease-in-out infinite;
+  }
+
+  /* Enlightenment glow */
+  @keyframes enlighten-glow {
+    0% { opacity: 0; filter: blur(20px); }
+    50% { opacity: 0.6; filter: blur(40px); }
+    100% { opacity: 0.15; filter: blur(60px); }
+  }
+
+  .enlighten-glow {
+    animation: enlighten-glow 2s ease-out forwards;
+  }
+
+  /* Ambient warmth pulse */
+  @keyframes ambient-pulse {
+    0%, 100% { opacity: 0.05; }
+    50% { opacity: 0.15; }
+  }
+
+  .ambient-pulse {
+    animation: ambient-pulse 4s ease-in-out infinite;
+  }
+```
+This is the code block that represents the suggested code change:
+```css
+/* ══════════════════════════════════════════════
+   PHOTO EXPLORER & TIMELINE STYLES
+═════════════════════════════════════════════ */
+
+/* Photo scene crossfade transitions */
+@keyframes scene-crossfade-in {
+    from { opacity: 0; transform: scale(1.02); }
+    to   { opacity: 1; transform: scale(1); }
+}
+
+.scene-fade-in {
+    animation: scene-crossfade-in 0.6s ease-out forwards;
+}
+
+/* Info card entrance */
+@keyframes info-card-enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.info-card-enter {
+    animation: info-card-enter 0.25s ease-out forwards;
+}
+
+/* Hotspot attention pulse (for scene hotspots) */
+@keyframes hotspot-attention {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(239, 204, 77, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(239, 204, 77, 0);
+    }
+}
+
+.hotspot-attention {
+    animation: hotspot-attention 3s ease-in-out infinite;
+}
+
+/* Timeline sepia filter for historical photos */
+.timeline-vintage {
+    filter: sepia(0.3) contrast(1.1) brightness(0.9);
+}
+
+.timeline-vintage:hover {
+    filter: sepia(0.1) contrast(1) brightness(1);
+    transition: filter 0.5s ease;
+}
+
+/* Pagination dot active scale */
+@keyframes dot-expand {
+    from { width: 8px; }
+    to   { width: 32px; }
+}
+
+.pagination-dot-active {
+    animation: dot-expand 0.3s ease-out forwards;
+}
+
+/* Scene navigation arrow hover glow */
+.scene-nav-arrow {
+    transition: all 0.3s ease;
+}
+
+.scene-nav-arrow:hover {
+    box-shadow: 0 0 20px rgba(239, 204, 77, 0.2);
+    border-color: rgba(239, 204, 77, 0.3);
 }

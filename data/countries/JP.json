@@ -1,0 +1,18 @@
+{
+    "id": "JP",
+    "name": "Japan",
+    "coords": [
+        36.2048,
+        138.2529
+    ],
+    "teaser": "Ancient traditions, timeless beauty",
+    "ambience": "/sounds/ambient/japan-ambient.mp3",
+    "places": [
+        "fushimi-inari",
+        "kinkaku-ji",
+        "mount-fuji",
+        "tokyo-shibuya"
+    ],
+    "flag": "🇯🇵",
+    "dramaticIntro": "A land where ancient spirits dwell in every shrine. Cherry blossoms fall on paths walked by samurai and poets alike."
+}

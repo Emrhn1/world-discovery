@@ -1,0 +1,31 @@
+{
+    "id": "giza-pyramids",
+    "name": "Pyramids of Giza",
+    "countryId": "EG",
+    "coords": [
+        29.9792,
+        31.1342
+    ],
+    "type": "historical",
+    "teaser": "Mountains built by human hands for eternity",
+    "shortStory": "For 4,500 years, these monuments have guarded the desert. The Great Pyramid was the world's tallest structure for 3,800 years. How ancient Egyptians built them without modern machinery remains one of history's greatest mysteries.",
+    "bullets": [
+        "2.3 million stone blocks in the Great Pyramid",
+        "Originally covered in white limestone",
+        "Aligned with incredible precision",
+        "Only surviving Ancient Wonder"
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=1920&q=80",
+            "alt": "Pyramids of Giza at sunset"
+        },
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1920&q=80",
+            "alt": "Sphinx with pyramids in background"
+        }
+    ],
+    "ambience": "ancient"
+}
