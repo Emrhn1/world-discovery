@@ -1,9 +1,11 @@
+// src/components/landing/LandingExperience.tsx
 'use client';
 
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Globe } from './Globe';
 import { DiscoveryTeasers } from './DiscoveryTeasers';
+import { LandmarkDome } from './LandmarkDome';
 import { SoundToggle } from '@/components/ui/SoundToggle';
 import { useSound } from '@/hooks/useSound';
 import { cn } from '@/lib/utils';
@@ -13,7 +15,6 @@ interface LandingExperienceProps {
     onEnter: () => void;
 }
 
-// Poetic teasers for the landing page
 const poeticTeasers = [
     "Where ancient stones remember what we've forgotten",
     "Every journey begins with a single question",
@@ -23,7 +24,7 @@ const poeticTeasers = [
 
 /**
  * Cinematic landing experience
- * Fullscreen immersive intro with globe and discovery teasers
+ * Fullscreen immersive intro with globe, text, and dome gallery
  */
 export function LandingExperience({ onEnter }: LandingExperienceProps) {
     const [isExiting, setIsExiting] = useState(false);
@@ -34,26 +35,12 @@ export function LandingExperience({ onEnter }: LandingExperienceProps) {
 
     const handleEnter = useCallback(async () => {
         setIsExiting(true);
-
-        // Initialize sound if not already
-        if (!isInitialized) {
-            await initialize();
-        }
-
-        // Start ambient sound if enabled
-        if (isEnabled) {
-            await playAmbient('default', 1500);
-        }
-
-        // Wait for exit animation
-        setTimeout(() => {
-            onEnter();
-        }, 800);
+        if (!isInitialized) await initialize();
+        if (isEnabled) await playAmbient('default', 1500);
+        setTimeout(() => { onEnter(); }, 800);
     }, [initialize, isInitialized, playAmbient, isEnabled, onEnter]);
 
-    const handleCountryClick = useCallback((countryId: string) => {
-        console.log('Country clicked from landing:', countryId);
-        // Could potentially navigate directly to that country
+    const handleCountryClick = useCallback((_countryId: string) => {
         handleEnter();
     }, [handleEnter]);
 
@@ -61,31 +48,61 @@ export function LandingExperience({ onEnter }: LandingExperienceProps) {
         <AnimatePresence mode="wait">
             {!isExiting && (
                 <motion.div
-                    className="fixed inset-0 z-50 bg-neutral-950 overflow-hidden"
+                    className="fixed inset-0 z-50 bg-neutral-950 overflow-y-auto overflow-x-hidden"
                     variants={cinematicRevealVariants}
                     initial="hidden"
                     animate="visible"
                     exit="exit"
                 >
                     {/* Background grain texture */}
-                    <div className="absolute inset-0 grain opacity-30" />
+                    <div className="absolute inset-0 grain opacity-30 pointer-events-none" />
+
+                    {/* Animated background particles */}
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                        {[...Array(20)].map((_, i) => (
+                            <motion.div
+                                key={i}
+                                className="absolute rounded-full"
+                                style={{
+                                    width: 2 + Math.random() * 3,
+                                    height: 2 + Math.random() * 3,
+                                    left: `${Math.random() * 100}%`,
+                                    top: `${Math.random() * 100}%`,
+                                    background: i % 3 === 0
+                                        ? 'rgba(239, 204, 77, 0.4)'
+                                        : 'rgba(100, 180, 255, 0.3)',
+                                }}
+                                animate={{
+                                    y: [0, -30 - Math.random() * 40, 0],
+                                    opacity: [0, 0.8, 0],
+                                    scale: [0.5, 1, 0.5],
+                                }}
+                                transition={{
+                                    duration: 4 + Math.random() * 4,
+                                    repeat: Infinity,
+                                    delay: Math.random() * 5,
+                                    ease: 'easeInOut',
+                                }}
+                            />
+                        ))}
+                    </div>
 
                     {/* Vignette overlay */}
                     <div className="absolute inset-0 vignette pointer-events-none" />
 
-                    {/* Main content grid */}
-                    <div className="relative h-full grid grid-cols-1 lg:grid-cols-2 gap-8 p-8 lg:p-16">
+                    {/* ─── Hero Section: Globe + Content ─── */}
+                    <div className="relative min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 p-8 lg:px-20 lg:py-16">
 
                         {/* Left side - Globe */}
                         <div className="flex items-center justify-center lg:justify-end">
                             <Globe
-                                className="w-full max-w-[500px] aspect-square"
+                                className="w-full max-w-[520px] aspect-square"
                                 onCountryClick={handleCountryClick}
                             />
                         </div>
 
                         {/* Right side - Content */}
-                        <div className="flex flex-col justify-center items-center lg:items-start gap-12">
+                        <div className="flex flex-col justify-center items-center lg:items-start gap-14">
 
                             {/* Title */}
                             <motion.div
@@ -94,10 +111,21 @@ export function LandingExperience({ onEnter }: LandingExperienceProps) {
                                 animate="visible"
                                 className="text-center lg:text-left"
                             >
-                                <h1 className="font-display text-display-lg md:text-display-xl text-gradient mb-4">
+                                <motion.div
+                                    className="inline-block mb-4 px-4 py-1.5 rounded-full border border-accent-500/30 bg-accent-500/5"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.3 }}
+                                >
+                                    <span className="text-accent-400 text-sm font-medium tracking-wider uppercase">
+                                        Explore the World
+                                    </span>
+                                </motion.div>
+
+                                <h1 className="font-display text-display-lg md:text-display-xl text-gradient mb-6">
                                     Discover
                                 </h1>
-                                <p className="text-body-lg text-neutral-400 max-w-md text-balance">
+                                <p className="text-body-lg text-neutral-400 max-w-md text-balance leading-relaxed">
                                     {currentTeaser}
                                 </p>
                             </motion.div>
@@ -123,7 +151,7 @@ export function LandingExperience({ onEnter }: LandingExperienceProps) {
                                 <button
                                     onClick={handleEnter}
                                     className={cn(
-                                        'group relative px-10 py-4 rounded-full',
+                                        'group relative px-12 py-5 rounded-full',
                                         'bg-gradient-to-r from-accent-500 to-accent-600',
                                         'text-neutral-900 font-semibold text-lg',
                                         'transition-all duration-300',
@@ -132,11 +160,11 @@ export function LandingExperience({ onEnter }: LandingExperienceProps) {
                                     )}
                                     aria-label="Enter the discovery experience"
                                 >
-                                    <span className="relative z-10 flex items-center gap-2">
-                                        Enter
+                                    <span className="relative z-10 flex items-center gap-3">
+                                        Begin Your Journey
                                         <motion.span
-                                            className="inline-block"
-                                            animate={{ x: [0, 5, 0] }}
+                                            className="inline-block text-xl"
+                                            animate={{ x: [0, 6, 0] }}
                                             transition={{ duration: 1.5, repeat: Infinity }}
                                         >
                                             →
@@ -151,21 +179,42 @@ export function LandingExperience({ onEnter }: LandingExperienceProps) {
                                     />
                                 </button>
 
-                                {/* Sound toggle */}
                                 <SoundToggle />
                             </motion.div>
                         </div>
                     </div>
 
-                    {/* Bottom decorative element */}
+                    {/* ─── Dome Gallery Section ─── */}
                     <motion.div
-                        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+                        className="relative"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.8, duration: 1.2 }}
+                    >
+                        {/* Section heading */}
+                        <div className="text-center mb-2 px-8">
+                            <motion.p
+                                className="text-neutral-500 text-sm uppercase tracking-[0.3em] font-medium"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 2.0 }}
+                            >
+                                Iconic Landmarks Await
+                            </motion.p>
+                        </div>
+
+                        <LandmarkDome />
+                    </motion.div>
+
+                    {/* Bottom scroll indicator */}
+                    <motion.div
+                        className="sticky bottom-8 flex justify-center pb-8 pointer-events-none"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.5, duration: 0.6 }}
                     >
                         <motion.div
-                            className="w-6 h-10 rounded-full border-2 border-neutral-600 flex items-start justify-center p-2"
+                            className="w-6 h-10 rounded-full border-2 border-neutral-600 flex items-start justify-center p-2 pointer-events-auto"
                             aria-hidden="true"
                         >
                             <motion.div
