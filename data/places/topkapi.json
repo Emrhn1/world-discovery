@@ -2,10 +2,7 @@
     "id": "topkapi",
     "name": "Topkapi Palace",
     "countryId": "TR",
-    "coords": [
-        41.0115,
-        28.9833
-    ],
+    "coords": [41.0115, 28.9833],
     "type": "historical",
     "teaser": "Where sultans dreamed empires into being",
     "shortStory": "For 400 years, this palace was the heart of Ottoman power. Within its walls, sultans ruled three continents, treasures from across the world gathered, and the fate of empires was decided in whispered councils.",
@@ -18,13 +15,23 @@
     "media": [
         {
             "type": "image",
-            "src": "https://images.unsplash.com/photo-1603634406031-f4c8c8f4c8a2?w=1920&q=80",
-            "alt": "Topkapi Palace courtyard with ornate tiles"
+            "src": "https://plus.unsplash.com/premium_photo-1678580415107-85c783c39cc4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "alt": "Topkapi Palace courtyard with ornate Ottoman architecture"
         },
         {
             "type": "image",
-            "src": "https://images.unsplash.com/photo-1560613021-60ea76c9dc60?w=1920&q=80",
-            "alt": "Bosphorus view from Topkapi Palace"
+            "src": "https://images.unsplash.com/photo-1641567782508-eca67c753403?q=80&w=2061&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "alt": "Bosphorus view from Topkapi Palace gardens"
+        },
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1663213774086-0335cfe3f7e4?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "alt": "Imperial Gate and towers of Topkapi Palace"
+        },
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1541410965313-d53b3c16ef17?w=1920&q=80",
+            "alt": "Topkapi Palace interior with ornate tiles and calligraphy"
         }
     ],
     "ambience": "ancient"
