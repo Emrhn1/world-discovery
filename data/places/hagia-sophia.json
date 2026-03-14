@@ -63,7 +63,7 @@
             "id": "exterior",
             "title": "Exterior — The Silhouette",
             "description": "Six minarets pierce the sky around the massive dome, a skyline that has defined Istanbul for 1,500 years.",
-            "src": "https://images.unsplash.com/photo-1558005137-d9619a5c539f?w=1920&q=80",
+            "src": "https://storage.evrimagaci.org/old/content_media/711352b2ed53d8d40175c1e39f9a5d12.jpeg",
             "alt": "Hagia Sophia exterior at sunset with minarets",
             "hotspots": [
                 {
@@ -145,7 +145,7 @@
             "id": "interior-mosaics",
             "title": "Interior — Hidden Mosaics",
             "description": "Centuries-old gold mosaics emerge from beneath Ottoman plaster, witnesses to an empire of faith and power.",
-            "src": "https://images.unsplash.com/photo-1604928141064-207b6de1e7d4?w=1920&q=80",
+            "src": "https://i.natgeofe.com/n/ea10dbf9-0305-471f-b198-b6e802d1b6ed/h_00000221439186_16x9.jpg?w=1200",
             "alt": "Byzantine mosaic of Christ Pantocrator in gold and blue",
             "hotspots": [
                 {
@@ -234,7 +234,7 @@
         },
         {
             "type": "image",
-            "src": "https://images.unsplash.com/photo-1558005137-d9619a5c539f?w=1920&q=80",
+            "src": "https://images.unsplash.com/photo-1630666094836-c5e64b051b89?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGFnaWElMjBzb3BoaWElMjBkZXNpZ258ZW58MHx8MHx8fDA%3D",
             "alt": "Hagia Sophia exterior at sunset"
         }
     ],
