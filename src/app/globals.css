@@ -5,21 +5,21 @@
 @tailwind utilities;
 
 :root {
-  /* Dark theme by default for cinematic feel */
-  --background: #0d0f13;
-  --foreground: #f7f7f8;
+  /* Light theme for exploration */
+  --background: #f5f7fa;
+  --foreground: #1a1f2c;
 
   /* Accent colors */
-  --accent-gold: #efcc4d;
-  --accent-gold-dim: rgba(239, 204, 77, 0.3);
+  --accent-gold: #d4a830;
+  --accent-gold-dim: rgba(212, 168, 48, 0.3);
 
   /* Overlay colors */
-  --overlay-dark: rgba(13, 15, 19, 0.85);
-  --overlay-medium: rgba(13, 15, 19, 0.6);
+  --overlay-dark: rgba(245, 247, 250, 0.92);
+  --overlay-medium: rgba(245, 247, 250, 0.75);
 
-  /* Glass effect */
-  --glass-bg: rgba(25, 28, 35, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  /* Glass effect - light version */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
 }
 
 /* Smooth scrolling with reduced motion support */
@@ -86,11 +86,11 @@ body {
 
   /* Glass panel effect */
   .glass-panel {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-  }
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
 
   /* Cinematic vignette overlay */
   .vignette {
@@ -446,18 +446,7 @@ body {
   .ambient-pulse {
     animation: ambient-pulse 4s ease-in-out infinite;
   }
-```
-This is the code block that represents the suggested code change:
-```css
-/* ══════════════════════════════════════════════
-   PHOTO EXPLORER & TIMELINE STYLES
-═════════════════════════════════════════════ */
 
-/* Photo scene crossfade transitions */
-@keyframes scene-crossfade-in {
-    from { opacity: 0; transform: scale(1.02); }
-    to   { opacity: 1; transform: scale(1); }
-}
 
 .scene-fade-in {
     animation: scene-crossfade-in 0.6s ease-out forwards;
