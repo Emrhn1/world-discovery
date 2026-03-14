@@ -193,7 +193,7 @@ export function ExplorationView() {
                         {/* Back button when in country/place view */}
                         {(state === 'country-view' || state === 'place-view') && (
                             <motion.button
-                                className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 glass-panel rounded-full text-sm text-neutral-300 hover:text-white transition-colors"
+                                className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 glass-panel rounded-full text-sm text-neutral-700 hover:text-neutral-900 transition-colors shadow-lg"
                                 onClick={state === 'place-view' ? handlePlaceClose : handleCountryClose}
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}

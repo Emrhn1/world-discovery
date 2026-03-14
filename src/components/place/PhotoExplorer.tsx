@@ -28,6 +28,10 @@ export function PhotoExplorer({ scenes, onSceneChange }: PhotoExplorerProps) {
 
     const scene = scenes[currentIndex];
     const totalScenes = scenes.length;
+    const sceneMediaType = detectMediaType(scene);
+    const isEmbedVideo =
+    sceneMediaType === 'video' &&
+    /(youtube\.com|youtu\.be|vimeo\.com)/i.test(scene.src);
 
     // Preload adjacent images
     useEffect(() => {
@@ -113,13 +117,48 @@ export function PhotoExplorer({ scenes, onSceneChange }: PhotoExplorerProps) {
                     className="absolute inset-0"
                 >
                     {/* The photo */}
-                    <div
-                        className="absolute inset-0 bg-cover bg-center transition-opacity duration-500"
-                        style={{
-                            backgroundImage: `url(${scene.src})`,
-                            opacity: isImageLoaded ? 0.7 : 0,
-                        }}
-                    />
+                    {sceneMediaType === 'image' ? (
+                        <>
+                            <div
+                                className="absolute inset-0 bg-cover bg-center transition-opacity duration-500"
+                                style={{
+                                    backgroundImage: `url(${scene.src})`,
+                                    opacity: isImageLoaded ? 0.7 : 0,
+                                }}
+                            />
+                            <img
+                                src={scene.src}
+                                alt={scene.alt || scene.title}
+                                onLoad={handleImageLoad}
+                                className="hidden"
+                            />
+                        </>
+                    ) : (
+                        <div className="absolute inset-0 transition-opacity duration-500" style={{ opacity: isImageLoaded ? 0.7 : 0 }}>
+                            {isEmbedVideo ? (
+                                <iframe
+                                    src={toEmbedUrl(scene.src)}
+                                    title={scene.alt || scene.title}
+                                    className="w-full h-full"
+                                    allow="autoplay; encrypted-media; picture-in-picture"
+                                    allowFullScreen
+                                    onLoad={handleImageLoad}
+                                />
+                            ) : (
+                                <video
+                                    className="w-full h-full object-cover"
+                                    src={scene.src}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    controls
+                                    onLoadedData={handleImageLoad}
+                                />
+                            )}
+                        </div>
+                    )}
+
                     {/* Hidden img for load detection */}
                     <img
                         src={scene.src}
@@ -363,3 +402,46 @@ export function PhotoExplorer({ scenes, onSceneChange }: PhotoExplorerProps) {
 }
 
 export default PhotoExplorer;
+
+function detectMediaType(scene: Scene): 'image' | 'video' {
+    if (scene.mediaType) return scene.mediaType;
+    const src = scene.src.toLowerCase();
+    if (
+        src.includes('youtube.com') ||
+        src.includes('youtu.be') ||
+        src.includes('vimeo.com') ||
+        /\.(mp4|webm|ogg)(\?.*)?$/i.test(src)
+    ) {
+        return 'video';
+    }
+    return 'image';
+}
+
+function toEmbedUrl(url: string): string {
+    try {
+        const u = new URL(url);
+
+        if (u.hostname.includes('youtu.be')) {
+            const id = u.pathname.slice(1);
+            return `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=1&rel=0`;
+        }
+
+        if (u.hostname.includes('youtube.com')) {
+            if (u.pathname.includes('/embed/')) return url;
+            const id = u.searchParams.get('v');
+            if (id) {
+                return `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=1&rel=0`;
+            }
+        }
+
+        if (u.hostname.includes('vimeo.com')) {
+            const id = u.pathname.split('/').filter(Boolean).pop();
+            if (id) return `https://player.vimeo.com/video/${id}?autoplay=1&muted=1&loop=1`;
+        }
+
+        return url;
+    } catch {
+        return url;
+    }
+}
+

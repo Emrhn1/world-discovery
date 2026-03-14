@@ -8,7 +8,8 @@ import { cn } from '@/lib/utils';
 import { useMapReactions } from '@/hooks/useMapReactions';
 
 // Custom dark map style
-const TILE_LAYER = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
+// Light colorful map style with beautiful water colors
+const TILE_LAYER = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
 const TILE_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
 interface MapContainerProps {
@@ -43,10 +44,10 @@ const createMarkerIcon = (color: string, size: number = 12, isGlowing = false) =
 
 // Marker colors by type
 const MARKER_COLORS = {
-    country: '#efcc4d',
-    historical: '#c9a227',
-    nature: '#2d8659',
-    city: '#5a7fb8',
+    country: '#d4a830',      // Altın sarısı - daha koyu
+    historical: '#b8941f',   // Tarihi mekanlar
+    nature: '#228b4f',       // Doğa - koyu yeşil
+    city: '#3d6ba8',         // Şehir - koyu mavi
 };
 
 /**
