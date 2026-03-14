@@ -73,9 +73,9 @@ export function CountryIntro({ country, onContinue }: CountryIntroProps) {
                     {country.flag && (
                         <span className="text-6xl mb-4 block">{country.flag}</span>
                     )}
-                    <h2 className="font-display text-display-md text-gradient-gold">
-                        {country.name}
-                    </h2>
+                    <h2 className="font-display text-display-md text-white mb-2">
+    {country.name}
+</h2>
                 </motion.div>
 
                 {/* Dramatic intro text */}

@@ -56,15 +56,15 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
                 exit={{ x: -30, opacity: 0 }}
                 transition={{ delay: 0.2 }}
             >
-                <div className="flex items-center gap-3 px-5 py-3 bg-black/40 backdrop-blur-md rounded-2xl border border-white/10">
-                    {country.flag && (
-                        <span className="text-3xl">{country.flag}</span>
-                    )}
-                    <div>
-                        <h2 className="font-display text-xl text-white">{country.name}</h2>
-                        <p className="text-sm text-neutral-400">{country.teaser}</p>
-                    </div>
-                </div>
+                <div className="flex items-center gap-3 px-5 py-3 bg-white/90 backdrop-blur-md rounded-2xl border border-neutral-200 shadow-lg">
+    {country.flag && (
+        <span className="text-3xl">{country.flag}</span>
+    )}
+    <div>
+        <h2 className="font-display text-xl text-neutral-900">{country.name}</h2>
+        <p className="text-sm text-neutral-600">{country.teaser}</p>
+    </div>
+</div>
             </motion.div>
 
             {/* Exploration layers - floating pills, bottom left */}
@@ -75,9 +75,9 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
                 exit={{ y: 30, opacity: 0 }}
                 transition={{ delay: 0.3 }}
             >
-                <p className="text-xs uppercase tracking-wider text-neutral-500 mb-3 ml-1">
-                    Explore
-                </p>
+               <p className="text-xs uppercase tracking-wider text-neutral-600 mb-3 ml-1">
+    Explore
+</p>
                 <div className="flex gap-2">
                     {availableLayers.map((layer, index) => (
                         <motion.button
@@ -86,13 +86,13 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
                                 activeLayer === layer.type ? null : layer.type
                             )}
                             className={cn(
-                                'flex items-center gap-2 px-4 py-3 rounded-xl',
-                                'backdrop-blur-md border transition-all duration-300',
-                                'hover:scale-105 focus:outline-none',
-                                activeLayer === layer.type
-                                    ? 'bg-white/20 border-white/30 text-white'
-                                    : 'bg-black/30 border-white/10 text-neutral-300 hover:border-white/20'
-                            )}
+    'flex items-center gap-2 px-4 py-3 rounded-xl',
+    'backdrop-blur-md border transition-all duration-300',
+    'hover:scale-105 focus:outline-none shadow-sm',
+    activeLayer === layer.type
+        ? 'bg-neutral-900 border-neutral-900 text-white'
+        : 'bg-white/90 border-neutral-300 text-neutral-700 hover:border-neutral-400'
+)}
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.4 + index * 0.1 }}
@@ -101,9 +101,9 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
                         >
                             <span className="text-lg">{layer.icon}</span>
                             <span className="text-sm font-medium">{layer.label}</span>
-                            <span className="text-xs px-2 py-0.5 rounded-full bg-white/10">
-                                {getPlacesByCountryAndType(country.id, layer.type).length}
-                            </span>
+                           <span className="text-xs px-2 py-0.5 rounded-full bg-neutral-200 text-neutral-700">
+    {getPlacesByCountryAndType(country.id, layer.type).length}
+</span>
                         </motion.button>
                     ))}
                 </div>
@@ -126,13 +126,13 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
                                     onMouseEnter={() => setHoveredPlace(place)}
                                     onMouseLeave={() => setHoveredPlace(null)}
                                     className={cn(
-                                        'px-4 py-2 rounded-xl',
-                                        'bg-black/50 backdrop-blur-md border border-white/10',
-                                        'text-white text-sm font-medium',
-                                        'hover:bg-white/10 hover:border-white/20',
-                                        'transition-all duration-200',
-                                        'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-400'
-                                    )}
+    'px-4 py-2 rounded-xl',
+    'bg-white/90 backdrop-blur-md border border-neutral-300',
+    'text-neutral-900 text-sm font-medium shadow-sm',
+    'hover:bg-neutral-100 hover:border-neutral-400',
+    'transition-all duration-200',
+    'focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900'
+)}
                                     initial={{ scale: 0.8, opacity: 0 }}
                                     animate={{ scale: 1, opacity: 1 }}
                                     transition={{ delay: index * 0.05 }}
