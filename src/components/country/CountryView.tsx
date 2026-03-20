@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { getPlacesByCountryAndType } from '@/lib/data';
+import { getPlacesByCountryAndTypeAsync } from '@/lib/dataAsync';
 import type { Country, PlaceType, Place } from '@/types';
 
 interface CountryViewProps {
@@ -32,19 +32,71 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
     const [activeLayer, setActiveLayer] = useState<PlaceType | null>(null);
     const [hoveredPlace, setHoveredPlace] = useState<Place | null>(null);
 
-    // Get places for active layer
-    const activePlaces = useMemo<Place[]>(() => {
-        if (!activeLayer) return [];
-        return getPlacesByCountryAndType(country.id, activeLayer);
+    const [activePlaces, setActivePlaces] = useState<Place[]>([]);
+    const [layerCounts, setLayerCounts] = useState<Record<PlaceType, number>>({
+        historical: 0,
+        nature: 0,
+        city: 0,
+    });
+
+    useEffect(() => {
+        let cancelled = false;
+
+        const loadLayerCounts = async () => {
+            const results = await Promise.all(
+                EXPLORATION_LAYERS.map((layer) => getPlacesByCountryAndTypeAsync(country.id, layer.type))
+            );
+
+            if (cancelled) return;
+
+            setLayerCounts({
+                historical: results[0].length,
+                nature: results[1].length,
+                city: results[2].length,
+            });
+        };
+
+        loadLayerCounts().catch(() => {
+            if (!cancelled) {
+                setLayerCounts({ historical: 0, nature: 0, city: 0 });
+            }
+        });
+
+        return () => {
+            cancelled = true;
+        };
+    }, [country.id]);
+
+    useEffect(() => {
+        let cancelled = false;
+
+        const loadActivePlaces = async () => {
+            if (!activeLayer) {
+                setActivePlaces([]);
+                return;
+            }
+
+            const places = await getPlacesByCountryAndTypeAsync(country.id, activeLayer);
+            if (!cancelled) {
+                setActivePlaces(places);
+            }
+        };
+
+        loadActivePlaces().catch(() => {
+            if (!cancelled) {
+                setActivePlaces([]);
+            }
+        });
+
+        return () => {
+            cancelled = true;
+        };
     }, [country.id, activeLayer]);
 
     // Get available layers
     const availableLayers = useMemo(() => {
-        return EXPLORATION_LAYERS.filter(layer => {
-            const places = getPlacesByCountryAndType(country.id, layer.type);
-            return places.length > 0;
-        });
-    }, [country.id]);
+        return EXPLORATION_LAYERS.filter(layer => layerCounts[layer.type] > 0);
+    }, [layerCounts]);
 
     return (
         <>
@@ -102,7 +154,7 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
                             <span className="text-lg">{layer.icon}</span>
                             <span className="text-sm font-medium">{layer.label}</span>
                            <span className="text-xs px-2 py-0.5 rounded-full bg-neutral-200 text-neutral-700">
-    {getPlacesByCountryAndType(country.id, layer.type).length}
+    {layerCounts[layer.type]}
 </span>
                         </motion.button>
                     ))}
