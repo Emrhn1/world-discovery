@@ -6,9 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:push": "prisma db push",
+    "db:seed": "node prisma/seed.mjs",
+    "db:studio": "prisma studio"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.2",
+    "@supabase/supabase-js": "^2.99.3",
     "@use-gesture/react": "^10.3.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.29.3",
@@ -17,7 +24,8 @@
     "react": "^18",
     "react-dom": "^18",
     "react-leaflet": "^5.0.0",
-    "tailwind-merge": "^3.4.0"
+    "tailwind-merge": "^3.4.0",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.21",
@@ -27,6 +35,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
     "postcss": "^8",
+    "prisma": "^6.16.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
