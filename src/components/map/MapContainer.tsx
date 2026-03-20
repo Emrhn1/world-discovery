@@ -3,9 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { getCountries, getPlacesByCountry } from '@/lib/data';
+import { getCountriesAsync, getPlacesByCountryAsync } from '@/lib/dataAsync';
 import { cn } from '@/lib/utils';
 import { useMapReactions } from '@/hooks/useMapReactions';
+import type { Country, Place } from '@/types';
 
 // Custom dark map style
 // Light colorful map style with beautiful water colors
@@ -67,6 +68,8 @@ export function MapContainer({
     const mapInstanceRef = useRef<L.Map | null>(null);
     const markersRef = useRef<L.LayerGroup | null>(null);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [countriesData, setCountriesData] = useState<Country[]>([]);
+    const [placesData, setPlacesData] = useState<Place[]>([]);
     const { setMapInstance, isDimmed } = useMapReactions();
 
     // Initialize map
@@ -117,6 +120,40 @@ export function MapContainer({
         });
     }, [center, zoom]);
 
+    // Load data (DB/hybrid via repository)
+    useEffect(() => {
+        let cancelled = false;
+
+        const load = async () => {
+            try {
+                if (selectedCountry && highlightPlaces) {
+                    const places = await getPlacesByCountryAsync(selectedCountry);
+                    if (!cancelled) {
+                        setPlacesData(places);
+                        setCountriesData([]);
+                    }
+                } else {
+                    const countries = await getCountriesAsync();
+                    if (!cancelled) {
+                        setCountriesData(countries);
+                        setPlacesData([]);
+                    }
+                }
+            } catch {
+                if (!cancelled) {
+                    setCountriesData([]);
+                    setPlacesData([]);
+                }
+            }
+        };
+
+        load();
+
+        return () => {
+            cancelled = true;
+        };
+    }, [selectedCountry, highlightPlaces]);
+
     // Update markers
     useEffect(() => {
         if (!mapInstanceRef.current || !markersRef.current || !isLoaded) return;
@@ -126,7 +163,7 @@ export function MapContainer({
 
         if (selectedCountry && highlightPlaces) {
             // Show place markers for selected country
-            const places = getPlacesByCountry(selectedCountry);
+            const places = placesData;
 
             places.forEach((place) => {
                 const icon = createMarkerIcon(
@@ -151,7 +188,7 @@ export function MapContainer({
             });
         } else {
             // Show country markers
-            const countries = getCountries();
+            const countries = countriesData;
 
             countries.forEach((country) => {
                 const icon = createMarkerIcon(MARKER_COLORS.country, 12, false);
@@ -171,7 +208,7 @@ export function MapContainer({
                 markersRef.current?.addLayer(marker);
             });
         }
-    }, [selectedCountry, highlightPlaces, onCountryClick, onPlaceClick, isLoaded]);
+    }, [selectedCountry, highlightPlaces, onCountryClick, onPlaceClick, isLoaded, placesData, countriesData]);
 
     return (
         <div className={cn('w-full h-full relative', className)}>

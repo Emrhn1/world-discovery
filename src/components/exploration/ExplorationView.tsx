@@ -8,7 +8,7 @@ import { CountryView } from '@/components/country/CountryView';
 import { PlaceOverlay } from '@/components/place/PlaceOverlay';
 import { SoundToggle } from '@/components/ui/SoundToggle';
 import { useSound } from '@/hooks/useSound';
-import { getCountryById, getPlaceById } from '@/lib/data';
+import { getCountryByIdAsync, getPlaceByIdAsync } from '@/lib/dataAsync';
 import type { Country, Place } from '@/types';
 import { fadeVariants } from '@/lib/animations';
 import { MapReactionsProvider } from '@/hooks/useMapReactions';
@@ -42,8 +42,8 @@ export function ExplorationView() {
     const { playAmbient, isEnabled } = useSound();
 
     // Handle country selection
-    const handleCountrySelect = useCallback((countryId: string) => {
-        const country = getCountryById(countryId);
+    const handleCountrySelect = useCallback(async (countryId: string) => {
+        const country = await getCountryByIdAsync(countryId);
         if (!country) return;
 
         setSelectedCountry(country);
@@ -65,8 +65,8 @@ export function ExplorationView() {
     }, [isEnabled, selectedCountry, playAmbient]);
 
     // Handle place selection
-    const handlePlaceSelect = useCallback((placeId: string) => {
-        const place = getPlaceById(placeId);
+    const handlePlaceSelect = useCallback(async (placeId: string) => {
+        const place = await getPlaceByIdAsync(placeId);
         if (!place) return;
 
         setSelectedPlace(place);

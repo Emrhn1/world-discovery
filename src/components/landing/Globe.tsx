@@ -4,8 +4,9 @@
 import { useRef, useEffect, useCallback, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { getCountries } from '@/lib/data';
+import { getCountriesAsync } from '@/lib/dataAsync';
 import Image from 'next/image';
+import type { Country } from '@/types';
 
 interface GlobeProps {
     className?: string;
@@ -54,9 +55,29 @@ export function Globe({ className, onCountryClick }: GlobeProps) {
     const animationRef = useRef<number>(0);
     const rotationRef = useRef(0);
     const [flagPositions, setFlagPositions] = useState<FlagPosition[]>([]);
-    const countries = getCountries();
+    const [countries, setCountries] = useState<Country[]>([]);
 
     // Generate flags with random positions (memoized)
+
+    useEffect(() => {
+        let cancelled = false;
+
+        const loadCountries = async () => {
+            try {
+                const data = await getCountriesAsync();
+                if (!cancelled) setCountries(data);
+            } catch {
+                if (!cancelled) setCountries([]);
+            }
+        };
+
+        loadCountries();
+
+        return () => {
+            cancelled = true;
+        };
+    }, []);
+
     const allFlags = useCallback(() => {
         // Map our data countries to their clickable flags
         // Only include countries that have flag files in public/flags
