@@ -1,0 +1,199 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum PlaceType {
+  historical
+  nature
+  city
+}
+
+enum DiscoveryType {
+  historical_insight
+  engineering_mystery
+  cultural_shift
+  turning_point
+  hidden_detail
+}
+
+enum HiddenTrigger {
+  long_hover
+  double_click
+  chain
+}
+
+enum MediaType {
+  image
+  video
+}
+
+model Country {
+  id            String   @id @db.VarChar(2)
+  name          String
+  latitude      Float
+  longitude     Float
+  teaser        String
+  ambience      String
+  flag          String?
+  dramaticIntro String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  places Place[]
+
+  @@index([name])
+}
+
+model Place {
+  id         String    @id
+  name       String
+  countryId  String    @db.VarChar(2)
+  latitude   Float
+  longitude  Float
+  type       PlaceType
+  teaser     String
+  shortStory String
+  bullets    String[]
+  ambience   String?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  country       Country         @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  discoveries   Discovery[]
+  scenes        Scene[]
+  timelinePhotos TimelinePhoto[]
+  zones         Zone[]
+  media         Media[]
+
+  @@index([countryId])
+  @@index([type])
+  @@index([countryId, type])
+}
+
+model Discovery {
+  id            String         @id
+  placeId        String
+  hook           String
+  story          String
+  type           DiscoveryType
+  isHero         Boolean       @default(false)
+  isHidden       Boolean       @default(false)
+  hiddenTrigger  HiddenTrigger?
+  chainRequires  Int[]
+  positionTop    String?
+  positionLeft   String?
+  displayOrder   Int
+
+  place Place @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  @@index([placeId])
+  @@index([type])
+  @@index([isHidden])
+}
+
+model Scene {
+  id          String   @id
+  placeId      String
+  title        String
+  description  String?
+  src          String
+  alt          String?
+  mediaType    MediaType @default(image)
+  displayOrder Int
+
+  place Place @relation(fields: [placeId], references: [id], onDelete: Cascade)
+  hotspots SceneHotspot[]
+
+  @@index([placeId, displayOrder])
+}
+
+model SceneHotspot {
+  id          String         @id
+  sceneId      String
+  icon         String
+  title        String
+  description  String
+  type         DiscoveryType?
+  positionTop  String
+  positionLeft String
+  displayOrder Int
+
+  scene Scene @relation(fields: [sceneId], references: [id], onDelete: Cascade)
+
+  @@index([sceneId, displayOrder])
+}
+
+model TimelinePhoto {
+  id                String @id
+  placeId            String
+  era               String
+  year              Int
+  src               String
+  description       String
+  chronologicalOrder Int
+
+  place Place @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  @@index([placeId, chronologicalOrder])
+  @@index([year])
+}
+
+model Zone {
+  id          String @id
+  placeId      String
+  name        String
+  coordsJson  Json
+  color       String?
+  description String?
+  displayOrder Int
+
+  place Place @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  @@index([placeId, displayOrder])
+}
+
+model Media {
+  id          String    @id
+  placeId      String
+  type        MediaType
+  src         String
+  alt         String?
+  displayOrder Int
+
+  place Place @relation(fields: [placeId], references: [id], onDelete: Cascade)
+
+  @@index([placeId, displayOrder])
+}
+
+model UserProgress {
+  id        String   @id @default(cuid())
+  userId    String
+  placeId   String
+  learned   Boolean  @default(false)
+  learnedAt DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, placeId])
+  @@index([userId])
+  @@index([placeId])
+}
+
+model VisitedRegion {
+  id         String   @id @default(cuid())
+  userId     String
+  regionId   String
+  regionType String
+  visitedAt  DateTime @default(now())
+
+  @@unique([userId, regionId])
+  @@index([userId])
+}
+
+
