@@ -1,0 +1,15 @@
+{
+    "id": "BE",
+    "name": "Belgium",
+    "coords": [
+        50.8503,
+        4.3517
+    ],
+    "teaser": "Guild halls and medieval squares",
+    "ambience": "/sounds/ambient/belgium-ambient.mp3",
+    "places": [
+        "grand-place-brussels"
+    ],
+    "flag": "BE",
+    "dramaticIntro": "Compact in size, rich in heritage."
+}

@@ -1,0 +1,15 @@
+{
+    "id": "GB",
+    "name": "United Kingdom",
+    "coords": [
+        51.5072,
+        -0.1276
+    ],
+    "teaser": "Ancient stones and royal legacies",
+    "ambience": "/sounds/ambient/uk-ambient.mp3",
+    "places": [
+        "stonehenge"
+    ],
+    "flag": "GB",
+    "dramaticIntro": "History lives in castles, cliffs, and cobbled streets."
+}

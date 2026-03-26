@@ -1,0 +1,15 @@
+{
+    "id": "PT",
+    "name": "Portugal",
+    "coords": [
+        38.7223,
+        -9.1393
+    ],
+    "teaser": "Ocean routes and old-world charm",
+    "ambience": "/sounds/ambient/portugal-ambient.mp3",
+    "places": [
+        "belem-tower"
+    ],
+    "flag": "PT",
+    "dramaticIntro": "Atlantic winds still carry the age of exploration."
+}

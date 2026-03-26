@@ -1,0 +1,15 @@
+{
+    "id": "DE",
+    "name": "Germany",
+    "coords": [
+        52.52,
+        13.405
+    ],
+    "teaser": "Castles, forests, and layered history",
+    "ambience": "/sounds/ambient/germany-ambient.mp3",
+    "places": [
+        "neuschwanstein-castle"
+    ],
+    "flag": "DE",
+    "dramaticIntro": "Tradition and innovation meet at every turn."
+}

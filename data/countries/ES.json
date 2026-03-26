@@ -1,0 +1,15 @@
+{
+    "id": "ES",
+    "name": "Spain",
+    "coords": [
+        40.4168,
+        -3.7038
+    ],
+    "teaser": "Sunlit heritage and vibrant plazas",
+    "ambience": "/sounds/ambient/spain-ambient.mp3",
+    "places": [
+        "alhambra"
+    ],
+    "flag": "ES",
+    "dramaticIntro": "Layers of Moorish, Roman, and modern life intertwine."
+}

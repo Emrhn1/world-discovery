@@ -1,0 +1,15 @@
+{
+    "id": "NZ",
+    "name": "New Zealand",
+    "coords": [
+        -41.2866,
+        174.7756
+    ],
+    "teaser": "Fiords, peaks, and cinematic wilderness",
+    "ambience": "/sounds/ambient/newzealand-ambient.mp3",
+    "places": [
+        "milford-sound"
+    ],
+    "flag": "NZ",
+    "dramaticIntro": "Nature here feels immediate and immense."
+}

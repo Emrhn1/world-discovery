@@ -1,0 +1,15 @@
+{
+    "id": "CA",
+    "name": "Canada",
+    "coords": [
+        45.4215,
+        -75.6972
+    ],
+    "teaser": "Wild nature and vast silence",
+    "ambience": "/sounds/ambient/canada-ambient.mp3",
+    "places": [
+        "banff-national-park"
+    ],
+    "flag": "CA",
+    "dramaticIntro": "Where forests, mountains, and lakes stretch beyond imagination."
+}

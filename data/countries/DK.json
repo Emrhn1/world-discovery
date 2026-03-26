@@ -1,0 +1,15 @@
+{
+    "id": "DK",
+    "name": "Denmark",
+    "coords": [
+        55.6761,
+        12.5683
+    ],
+    "teaser": "Harbor cities and Scandinavian coziness",
+    "ambience": "/sounds/ambient/denmark-ambient.mp3",
+    "places": [
+        "nyhavn"
+    ],
+    "flag": "DK",
+    "dramaticIntro": "A small kingdom with outsized cultural influence."
+}

@@ -1,0 +1,15 @@
+{
+    "id": "FI",
+    "name": "Finland",
+    "coords": [
+        60.1699,
+        24.9384
+    ],
+    "teaser": "Fortresses, forests, and northern silence",
+    "ambience": "/sounds/ambient/finland-ambient.mp3",
+    "places": [
+        "suomenlinna"
+    ],
+    "flag": "FI",
+    "dramaticIntro": "Between Baltic shores and endless woods."
+}

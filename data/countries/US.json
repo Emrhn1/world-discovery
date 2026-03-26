@@ -1,0 +1,15 @@
+{
+    "id": "US",
+    "name": "United States",
+    "coords": [
+        38.9072,
+        -77.0369
+    ],
+    "teaser": "Diverse stories across vast landscapes",
+    "ambience": "/sounds/ambient/usa-ambient.mp3",
+    "places": [
+        "statue-of-liberty"
+    ],
+    "flag": "US",
+    "dramaticIntro": "From canyons to skylines, every horizon tells a chapter."
+}

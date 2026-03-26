@@ -1,0 +1,15 @@
+{
+    "id": "FR",
+    "name": "France",
+    "coords": [
+        48.8566,
+        2.3522
+    ],
+    "teaser": "Art, romance, and monumental heritage",
+    "ambience": "/sounds/ambient/france-ambient.mp3",
+    "places": [
+        "eiffel-tower"
+    ],
+    "flag": "FR",
+    "dramaticIntro": "From Gothic cathedrals to modern boulevards, elegance endures."
+}

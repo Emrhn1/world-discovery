@@ -1,0 +1,15 @@
+{
+    "id": "MX",
+    "name": "Mexico",
+    "coords": [
+        19.4326,
+        -99.1332
+    ],
+    "teaser": "Ancient civilizations and living traditions",
+    "ambience": "/sounds/ambient/mexico-ambient.mp3",
+    "places": [
+        "chichen-itza"
+    ],
+    "flag": "MX",
+    "dramaticIntro": "Pre-Columbian wonders meet modern culture."
+}

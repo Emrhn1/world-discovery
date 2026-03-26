@@ -1,0 +1,15 @@
+{
+    "id": "NL",
+    "name": "Netherlands",
+    "coords": [
+        52.3676,
+        4.9041
+    ],
+    "teaser": "Canals, wind, and engineered landscapes",
+    "ambience": "/sounds/ambient/netherlands-ambient.mp3",
+    "places": [
+        "kinderdijk-windmills"
+    ],
+    "flag": "NL",
+    "dramaticIntro": "A nation shaped by water management and trade."
+}

@@ -1,0 +1,15 @@
+{
+    "id": "NO",
+    "name": "Norway",
+    "coords": [
+        59.9139,
+        10.7522
+    ],
+    "teaser": "Fjords carved by ancient ice",
+    "ambience": "/sounds/ambient/norway-ambient.mp3",
+    "places": [
+        "geirangerfjord"
+    ],
+    "flag": "NO",
+    "dramaticIntro": "Nature dominates the narrative here."
+}

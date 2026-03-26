@@ -1,0 +1,15 @@
+{
+    "id": "AR",
+    "name": "Argentina",
+    "coords": [
+        -34.6037,
+        -58.3816
+    ],
+    "teaser": "Patagonian winds and Andean horizons",
+    "ambience": "/sounds/ambient/argentina-ambient.mp3",
+    "places": [
+        "perito-moreno-glacier"
+    ],
+    "flag": "AR",
+    "dramaticIntro": "From glaciers to tango, contrast is everywhere."
+}

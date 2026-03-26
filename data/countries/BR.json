@@ -1,0 +1,15 @@
+{
+    "id": "BR",
+    "name": "Brazil",
+    "coords": [
+        -15.7939,
+        -47.8828
+    ],
+    "teaser": "Rainforest energy and giant rivers",
+    "ambience": "/sounds/ambient/brazil-ambient.mp3",
+    "places": [
+        "iguazu-falls"
+    ],
+    "flag": "BR",
+    "dramaticIntro": "Nature and culture move at continental scale."
+}

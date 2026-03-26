@@ -1,0 +1,15 @@
+{
+    "id": "AT",
+    "name": "Austria",
+    "coords": [
+        48.2082,
+        16.3738
+    ],
+    "teaser": "Imperial grandeur and alpine calm",
+    "ambience": "/sounds/ambient/austria-ambient.mp3",
+    "places": [
+        "schonbrunn-palace"
+    ],
+    "flag": "AT",
+    "dramaticIntro": "Music, palaces, and mountain villages coexist."
+}

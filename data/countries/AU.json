@@ -1,0 +1,15 @@
+{
+    "id": "AU",
+    "name": "Australia",
+    "coords": [
+        -35.2809,
+        149.13
+    ],
+    "teaser": "Ancient landforms and coastal cities",
+    "ambience": "/sounds/ambient/australia-ambient.mp3",
+    "places": [
+        "uluru"
+    ],
+    "flag": "AU",
+    "dramaticIntro": "A continent of extremes, stories, and skies."
+}

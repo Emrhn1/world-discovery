@@ -1,0 +1,15 @@
+{
+    "id": "SE",
+    "name": "Sweden",
+    "coords": [
+        59.3293,
+        18.0686
+    ],
+    "teaser": "Nordic light and maritime towns",
+    "ambience": "/sounds/ambient/sweden-ambient.mp3",
+    "places": [
+        "gamla-stan"
+    ],
+    "flag": "SE",
+    "dramaticIntro": "Design and history meet along cold waters."
+}

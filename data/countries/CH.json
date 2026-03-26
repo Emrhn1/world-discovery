@@ -1,0 +1,15 @@
+{
+    "id": "CH",
+    "name": "Switzerland",
+    "coords": [
+        46.948,
+        7.4474
+    ],
+    "teaser": "Alpine peaks and pristine valleys",
+    "ambience": "/sounds/ambient/switzerland-ambient.mp3",
+    "places": [
+        "matterhorn"
+    ],
+    "flag": "CH",
+    "dramaticIntro": "Where mountain rhythm shapes everyday life."
+}
