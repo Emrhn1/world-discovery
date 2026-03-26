@@ -1,50 +1,65 @@
 'use client';
 
 import { useCallback, useMemo } from 'react';
+import { getAccessTokenOrNull } from '@/lib/supabase/browser';
 
 const STORAGE_KEY = 'world-discovery-visited-regions';
 
-/**
- * Hook for tracking which regions the user has visited
- * Used to show intro card only on first visit
- */
+function authHeaders(token: string | null): HeadersInit {
+  return token
+    ? { Authorization: `Bearer ${token}` }
+    : {};
+}
+
 export function useVisitedRegions() {
-    // Get visited regions from localStorage
-    const getVisited = useCallback((): Set<string> => {
-        if (typeof window === 'undefined') return new Set();
-        try {
-            const stored = localStorage.getItem(STORAGE_KEY);
-            return stored ? new Set(JSON.parse(stored)) : new Set();
-        } catch {
-            return new Set();
-        }
-    }, []);
+  const getVisited = useCallback((): Set<string> => {
+    if (typeof window === 'undefined') return new Set();
 
-    // Check if a region has been visited
-    const hasVisited = useCallback((regionId: string): boolean => {
-        return getVisited().has(regionId);
-    }, [getVisited]);
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return stored ? new Set(JSON.parse(stored)) : new Set();
+    } catch {
+      return new Set();
+    }
+  }, []);
 
-    // Mark a region as visited
-    const markVisited = useCallback((regionId: string): void => {
-        if (typeof window === 'undefined') return;
-        try {
-            const visited = getVisited();
-            visited.add(regionId);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(visited)));
-        } catch {
-            // Silently fail if localStorage is unavailable
-        }
-    }, [getVisited]);
+  const hasVisited = useCallback((regionId: string): boolean => {
+    return getVisited().has(regionId);
+  }, [getVisited]);
 
-    // Get all visited region IDs
-    const visitedRegions = useMemo(() => getVisited(), [getVisited]);
+  const markVisited = useCallback((regionId: string): void => {
+    if (typeof window === 'undefined') return;
 
-    return {
-        hasVisited,
-        markVisited,
-        visitedRegions,
-    };
+    try {
+      const visited = getVisited();
+      visited.add(regionId);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(visited)));
+    } catch {
+      // ignore
+    }
+
+    void (async () => {
+      const token = await getAccessTokenOrNull();
+      if (!token) return;
+
+      await fetch('/api/visited-regions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...authHeaders(token),
+        },
+        body: JSON.stringify({ regionId, regionType: 'place' }),
+      });
+    })();
+  }, [getVisited]);
+
+  const visitedRegions = useMemo(() => getVisited(), [getVisited]);
+
+  return {
+    hasVisited,
+    markVisited,
+    visitedRegions,
+  };
 }
 
 export default useVisitedRegions;
