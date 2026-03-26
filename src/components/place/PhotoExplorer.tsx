@@ -30,15 +30,18 @@ export function PhotoExplorer({ scenes, onSceneChange }: PhotoExplorerProps) {
     const totalScenes = scenes.length;
     const sceneMediaType = detectMediaType(scene);
     const isEmbedVideo =
-    sceneMediaType === 'video' &&
-    /(youtube\.com|youtu\.be|vimeo\.com)/i.test(scene.src);
+        sceneMediaType === 'video' &&
+        /(youtube\.com|youtu\.be|vimeo\.com)/i.test(scene.src);
 
     // Preload adjacent images
     useEffect(() => {
         const preload = (idx: number) => {
             if (idx >= 0 && idx < totalScenes) {
-                const img = new Image();
-                img.src = scenes[idx].src;
+                const target = scenes[idx];
+                if (detectMediaType(target) === 'image') {
+                    const img = new Image();
+                    img.src = target.src;
+                }
             }
         };
         preload(currentIndex + 1);
@@ -159,13 +162,6 @@ export function PhotoExplorer({ scenes, onSceneChange }: PhotoExplorerProps) {
                         </div>
                     )}
 
-                    {/* Hidden img for load detection */}
-                    <img
-                        src={scene.src}
-                        alt={scene.alt || scene.title}
-                        onLoad={handleImageLoad}
-                        className="hidden"
-                    />
 
                     {/* Atmospheric overlays (a bit lighter than fog-of-war mode) */}
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/20 to-neutral-950/40" />
