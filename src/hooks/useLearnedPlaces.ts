@@ -2,117 +2,141 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import type { LearnedProgress } from '@/types';
+import { getAccessTokenOrNull } from '@/lib/supabase/browser';
 
 const STORAGE_KEY = 'learnedPlaces';
 
-/**
- * Hook for managing learned places
- */
+function authHeaders(token: string | null): HeadersInit {
+  return token
+    ? { Authorization: `Bearer ${token}` }
+    : {};
+}
+
 export function useLearnedPlaces() {
-    const [learned, setLearned] = useState<LearnedProgress>({});
-    const [isLoading, setIsLoading] = useState(true);
+  const [learned, setLearned] = useState<LearnedProgress>({});
+  const [isLoading, setIsLoading] = useState(true);
 
-    // Load from localStorage on mount
-    useEffect(() => {
-        try {
-            const stored = localStorage.getItem(STORAGE_KEY);
-            if (stored) {
-                setLearned(JSON.parse(stored));
-            }
-        } catch {
-            // Use empty state
+  useEffect(() => {
+    let cancelled = false;
+
+    const load = async () => {
+      // local fallback first
+      try {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored && !cancelled) {
+          setLearned(JSON.parse(stored));
         }
-        setIsLoading(false);
-    }, []);
+      } catch {
+        // ignore
+      }
 
-    // Save to localStorage when learned changes
-    useEffect(() => {
-        if (isLoading) return;
-
-        try {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(learned));
-        } catch {
-            // Ignore storage errors
+      try {
+        const token = await getAccessTokenOrNull();
+        if (!token) {
+          if (!cancelled) setIsLoading(false);
+          return;
         }
-    }, [learned, isLoading]);
 
-    // Mark a place as learned
-    const markAsLearned = useCallback((placeId: string) => {
-        setLearned(prev => ({
-            ...prev,
-            [placeId]: {
-                learned: true,
-                learnedAt: Date.now(),
-            },
-        }));
+        const response = await fetch('/api/progress', {
+          method: 'GET',
+          headers: authHeaders(token),
+          cache: 'no-store',
+        });
 
-        // Mock API call (future-ready)
-        mockApiMarkLearned(placeId);
-    }, []);
-
-    // Check if a place is learned
-    const isLearned = useCallback((placeId: string): boolean => {
-        return learned[placeId]?.learned ?? false;
-    }, [learned]);
-
-    // Get total learned count
-    const getLearnedCount = useCallback((): number => {
-        return Object.values(learned).filter(p => p.learned).length;
-    }, [learned]);
-
-    // Get all learned place IDs
-    const getLearnedIds = useCallback((): string[] => {
-        return Object.entries(learned)
-            .filter(([, value]) => value.learned)
-            .map(([key]) => key);
-    }, [learned]);
-
-    // Reset all progress
-    const resetProgress = useCallback(() => {
-        setLearned({});
-        localStorage.removeItem(STORAGE_KEY);
-    }, []);
-
-    return {
-        learned,
-        isLoading,
-        markAsLearned,
-        isLearned,
-        getLearnedCount,
-        getLearnedIds,
-        resetProgress,
+        if (response.ok) {
+          const data = await response.json() as { progress?: LearnedProgress };
+          if (!cancelled && data.progress) {
+            setLearned(data.progress);
+          }
+        }
+      } catch {
+        // keep local fallback
+      } finally {
+        if (!cancelled) setIsLoading(false);
+      }
     };
-}
 
-/**
- * Mock API function for future backend integration
- */
-async function mockApiMarkLearned(placeId: string): Promise<void> {
-    // In production, this would be:
-    // await fetch('/api/learned', {
-    //   method: 'POST',
-    //   body: JSON.stringify({ placeId }),
-    // });
+    load();
 
-    console.log(`[API Mock] POST /api/learned - placeId: ${placeId}`);
-}
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-/**
- * Mock API function to get progress (for future backend)
- */
-export async function mockApiGetProgress(): Promise<LearnedProgress> {
-    // In production, this would be:
-    // const response = await fetch('/api/progress');
-    // return response.json();
-
-    console.log('[API Mock] GET /api/progress');
+  useEffect(() => {
+    if (isLoading) return;
 
     try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        return stored ? JSON.parse(stored) : {};
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(learned));
     } catch {
-        return {};
+      // Ignore storage errors
     }
+  }, [learned, isLoading]);
+
+  const markAsLearned = useCallback((placeId: string) => {
+    const learnedAt = Date.now();
+
+    setLearned(prev => ({
+      ...prev,
+      [placeId]: {
+        learned: true,
+        learnedAt,
+      },
+    }));
+
+    void (async () => {
+      const token = await getAccessTokenOrNull();
+      if (!token) return;
+
+      await fetch('/api/progress', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...authHeaders(token),
+        },
+        body: JSON.stringify({ placeId }),
+      });
+    })();
+  }, []);
+
+  const isLearned = useCallback((placeId: string): boolean => {
+    return learned[placeId]?.learned ?? false;
+  }, [learned]);
+
+  const getLearnedCount = useCallback((): number => {
+    return Object.values(learned).filter(p => p.learned).length;
+  }, [learned]);
+
+  const getLearnedIds = useCallback((): string[] => {
+    return Object.entries(learned)
+      .filter(([, value]) => value.learned)
+      .map(([key]) => key);
+  }, [learned]);
+
+  const resetProgress = useCallback(() => {
+    setLearned({});
+    localStorage.removeItem(STORAGE_KEY);
+
+    void (async () => {
+      const token = await getAccessTokenOrNull();
+      if (!token) return;
+
+      await fetch('/api/progress', {
+        method: 'DELETE',
+        headers: authHeaders(token),
+      });
+    })();
+  }, []);
+
+  return {
+    learned,
+    isLoading,
+    markAsLearned,
+    isLearned,
+    getLearnedCount,
+    getLearnedIds,
+    resetProgress,
+  };
 }
 
 export default useLearnedPlaces;
