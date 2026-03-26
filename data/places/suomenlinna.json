@@ -1,0 +1,37 @@
+{
+    "id": "suomenlinna",
+    "name": "Suomenlinna",
+    "countryId": "FI",
+    "coords": [
+        60.1466,
+        24.9884
+    ],
+    "type": "historical",
+    "teaser": "Sea fortress on Helsinki islands",
+    "shortStory": "Suomenlinna protected strategic Baltic routes and now stands as a preserved military-urban ensemble.",
+    "bullets": [
+        "Built from 1748 onward",
+        "UNESCO World Heritage",
+        "Spans multiple linked islands"
+    ],
+    "discoveries": [
+        {
+            "hook": "Granite walls hold centuries of maritime defense.",
+            "story": "Suomenlinna protected strategic Baltic routes and now stands as a preserved military-urban ensemble.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "35%",
+                "left": "45%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=fi",
+            "alt": "Suomenlinna view"
+        }
+    ],
+    "ambience": "ancient"
+}

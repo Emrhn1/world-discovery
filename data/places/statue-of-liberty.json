@@ -1,0 +1,37 @@
+{
+    "id": "statue-of-liberty",
+    "name": "Statue of Liberty",
+    "countryId": "US",
+    "coords": [
+        40.6892,
+        -74.0445
+    ],
+    "type": "city",
+    "teaser": "A symbol of freedom rising above New York Harbor",
+    "shortStory": "From immigrant dreams to modern identity, this monument welcomed millions arriving by sea.",
+    "bullets": [
+        "Gift from France in 1886",
+        "Torch symbolizes enlightenment",
+        "A UNESCO World Heritage site"
+    ],
+    "discoveries": [
+        {
+            "hook": "The statue's silhouette has watched over one of the busiest harbors in the world.",
+            "story": "From immigrant dreams to modern identity, this monument welcomed millions arriving by sea.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "35%",
+                "left": "45%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=us",
+            "alt": "Statue of Liberty view"
+        }
+    ],
+    "ambience": "ancient"
+}

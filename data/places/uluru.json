@@ -1,0 +1,37 @@
+{
+    "id": "uluru",
+    "name": "Uluru",
+    "countryId": "AU",
+    "coords": [
+        -25.3444,
+        131.0369
+    ],
+    "type": "nature",
+    "teaser": "Sacred sandstone monolith",
+    "shortStory": "Uluru is central to Anangu culture and one of Earth's most iconic desert landforms.",
+    "bullets": [
+        "Rises 348 m above plains",
+        "Sacred Indigenous site",
+        "Color shifts at sunrise/sunset"
+    ],
+    "discoveries": [
+        {
+            "hook": "Its changing colors map the pulse of the desert.",
+            "story": "Uluru is central to Anangu culture and one of Earth's most iconic desert landforms.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": {
+                "top": "35%",
+                "left": "45%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=au",
+            "alt": "Uluru view"
+        }
+    ],
+    "ambience": "nature"
+}

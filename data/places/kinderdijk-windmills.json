@@ -1,0 +1,37 @@
+{
+    "id": "kinderdijk-windmills",
+    "name": "Kinderdijk Windmills",
+    "countryId": "NL",
+    "coords": [
+        51.885,
+        4.6347
+    ],
+    "type": "historical",
+    "teaser": "Historic windmills and water control",
+    "shortStory": "Kinderdijk's windmills demonstrate Dutch ingenuity in reclaiming and protecting low-lying land.",
+    "bullets": [
+        "18th-century windmill complex",
+        "UNESCO World Heritage",
+        "Hydraulic engineering landmark"
+    ],
+    "discoveries": [
+        {
+            "hook": "Here, technology and nature negotiate daily.",
+            "story": "Kinderdijk's windmills demonstrate Dutch ingenuity in reclaiming and protecting low-lying land.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "35%",
+                "left": "45%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=nl",
+            "alt": "Kinderdijk Windmills view"
+        }
+    ],
+    "ambience": "ancient"
+}

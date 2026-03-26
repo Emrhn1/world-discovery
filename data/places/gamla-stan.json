@@ -1,0 +1,37 @@
+{
+    "id": "gamla-stan",
+    "name": "Gamla Stan",
+    "countryId": "SE",
+    "coords": [
+        59.3257,
+        18.0719
+    ],
+    "type": "city",
+    "teaser": "Stockholm's medieval old town",
+    "shortStory": "Narrow lanes, colorful facades, and royal landmarks preserve Stockholm's oldest urban core.",
+    "bullets": [
+        "Founded in 13th century",
+        "Royal Palace nearby",
+        "Cobbled medieval street grid"
+    ],
+    "discoveries": [
+        {
+            "hook": "Gamla Stan feels like a living museum.",
+            "story": "Narrow lanes, colorful facades, and royal landmarks preserve Stockholm's oldest urban core.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "35%",
+                "left": "45%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=se",
+            "alt": "Gamla Stan view"
+        }
+    ],
+    "ambience": "ancient"
+}

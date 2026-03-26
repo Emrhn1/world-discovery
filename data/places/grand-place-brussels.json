@@ -1,0 +1,37 @@
+{
+    "id": "grand-place-brussels",
+    "name": "Grand Place",
+    "countryId": "BE",
+    "coords": [
+        50.8467,
+        4.3525
+    ],
+    "type": "city",
+    "teaser": "Ornate central square of Brussels",
+    "shortStory": "Grand Place is famed for baroque guildhalls and civic architecture reflecting mercantile prosperity.",
+    "bullets": [
+        "UNESCO World Heritage",
+        "Rebuilt after 1695 bombardment",
+        "Hosts flower carpet events"
+    ],
+    "discoveries": [
+        {
+            "hook": "Its facades narrate civic pride in gold and stone.",
+            "story": "Grand Place is famed for baroque guildhalls and civic architecture reflecting mercantile prosperity.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "35%",
+                "left": "45%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=be",
+            "alt": "Grand Place view"
+        }
+    ],
+    "ambience": "ancient"
+}

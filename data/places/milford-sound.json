@@ -1,0 +1,37 @@
+{
+    "id": "milford-sound",
+    "name": "Milford Sound",
+    "countryId": "NZ",
+    "coords": [
+        -44.6718,
+        167.9264
+    ],
+    "type": "nature",
+    "teaser": "Fiord with sheer cliffs and rainforests",
+    "shortStory": "Milford Sound features glacial cliffs, frequent rainfall, and cascading waterfalls in dramatic scale.",
+    "bullets": [
+        "Located in Fiordland National Park",
+        "Popular for cruises and kayaking",
+        "Known for Mitre Peak"
+    ],
+    "discoveries": [
+        {
+            "hook": "Mist and stone shape its unforgettable atmosphere.",
+            "story": "Milford Sound features glacial cliffs, frequent rainfall, and cascading waterfalls in dramatic scale.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": {
+                "top": "35%",
+                "left": "45%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=nz",
+            "alt": "Milford Sound view"
+        }
+    ],
+    "ambience": "nature"
+}

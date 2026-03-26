@@ -1,0 +1,37 @@
+{
+    "id": "matterhorn",
+    "name": "Matterhorn",
+    "countryId": "CH",
+    "coords": [
+        45.9763,
+        7.6586
+    ],
+    "type": "nature",
+    "teaser": "Iconic pyramidal Alpine peak",
+    "shortStory": "The Matterhorn stands as one of the world's most recognizable mountains and a magnet for climbers.",
+    "bullets": [
+        "Elevation 4,478 m",
+        "Straddles Swiss-Italian border",
+        "Symbol of the Alps"
+    ],
+    "discoveries": [
+        {
+            "hook": "Its silhouette defines alpine imagination.",
+            "story": "The Matterhorn stands as one of the world's most recognizable mountains and a magnet for climbers.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": {
+                "top": "35%",
+                "left": "45%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=ch",
+            "alt": "Matterhorn view"
+        }
+    ],
+    "ambience": "nature"
+}

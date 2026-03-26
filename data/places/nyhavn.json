@@ -1,0 +1,37 @@
+{
+    "id": "nyhavn",
+    "name": "Nyhavn",
+    "countryId": "DK",
+    "coords": [
+        55.6797,
+        12.5912
+    ],
+    "type": "city",
+    "teaser": "Historic waterfront in Copenhagen",
+    "shortStory": "Nyhavn's colorful houses and old ships represent Copenhagen's maritime and urban heritage.",
+    "bullets": [
+        "17th-century canal district",
+        "Former commercial port",
+        "Now a major cultural landmark"
+    ],
+    "discoveries": [
+        {
+            "hook": "Its facades mirror centuries of seafaring life.",
+            "story": "Nyhavn's colorful houses and old ships represent Copenhagen's maritime and urban heritage.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "35%",
+                "left": "45%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=dk",
+            "alt": "Nyhavn view"
+        }
+    ],
+    "ambience": "ancient"
+}

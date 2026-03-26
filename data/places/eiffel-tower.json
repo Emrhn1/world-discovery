@@ -1,0 +1,37 @@
+{
+    "id": "eiffel-tower",
+    "name": "Eiffel Tower",
+    "countryId": "FR",
+    "coords": [
+        48.8584,
+        2.2945
+    ],
+    "type": "city",
+    "teaser": "Iron lattice icon of Paris",
+    "shortStory": "Originally built for the 1889 World's Fair, the tower became a global symbol of engineering and style.",
+    "bullets": [
+        "Constructed in just over 2 years",
+        "324 meters tall",
+        "Most visited paid monument worldwide"
+    ],
+    "discoveries": [
+        {
+            "hook": "Paris is often measured against this silhouette.",
+            "story": "Originally built for the 1889 World's Fair, the tower became a global symbol of engineering and style.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "35%",
+                "left": "45%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=fr",
+            "alt": "Eiffel Tower view"
+        }
+    ],
+    "ambience": "ancient"
+}

@@ -1,0 +1,37 @@
+{
+    "id": "schonbrunn-palace",
+    "name": "Schönbrunn Palace",
+    "countryId": "AT",
+    "coords": [
+        48.1845,
+        16.3122
+    ],
+    "type": "historical",
+    "teaser": "Habsburg summer residence in Vienna",
+    "shortStory": "This palace complex reflects imperial court life through ornate halls and monumental gardens.",
+    "bullets": [
+        "1,400+ rooms",
+        "UNESCO World Heritage",
+        "Center of Habsburg ceremonial culture"
+    ],
+    "discoveries": [
+        {
+            "hook": "Its avenues still echo imperial footsteps.",
+            "story": "This palace complex reflects imperial court life through ornate halls and monumental gardens.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "35%",
+                "left": "45%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=at",
+            "alt": "Schönbrunn Palace view"
+        }
+    ],
+    "ambience": "ancient"
+}

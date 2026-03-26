@@ -1,0 +1,37 @@
+{
+    "id": "belem-tower",
+    "name": "Belém Tower",
+    "countryId": "PT",
+    "coords": [
+        38.6916,
+        -9.2159
+    ],
+    "type": "historical",
+    "teaser": "Fortress guarding Lisbon's waterfront",
+    "shortStory": "Built in the 16th century, Belém Tower marked departures of Portuguese navigators toward distant oceans.",
+    "bullets": [
+        "Manualine architectural style",
+        "UNESCO World Heritage",
+        "Symbol of maritime exploration"
+    ],
+    "discoveries": [
+        {
+            "hook": "Its walls remember the beginning of global voyages.",
+            "story": "Built in the 16th century, Belém Tower marked departures of Portuguese navigators toward distant oceans.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "35%",
+                "left": "45%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=pt",
+            "alt": "Belém Tower view"
+        }
+    ],
+    "ambience": "ancient"
+}
