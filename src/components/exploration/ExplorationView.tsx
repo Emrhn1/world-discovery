@@ -1,6 +1,6 @@
-'use client';
+﻿'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import { CountryIntro } from '@/components/country/CountryIntro';
@@ -26,7 +26,7 @@ const MapContainer = dynamic(
     }
 );
 
-type ExplorationState = 'map' | 'country-intro' | 'country-view' | 'place-view';
+type ExplorationState = 'map' | 'country-intro' | 'country-view' | 'place-loading' | 'place-view';
 
 /**
  * Main exploration view after landing
@@ -38,6 +38,8 @@ export function ExplorationView() {
     const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
     const [mapCenter, setMapCenter] = useState<[number, number]>([30, 20]);
     const [mapZoom, setMapZoom] = useState(2.5);
+
+    const placeRequestRef = useRef(0);
 
     const { playAmbient, isEnabled } = useSound();
 
@@ -66,8 +68,19 @@ export function ExplorationView() {
 
     // Handle place selection
     const handlePlaceSelect = useCallback(async (placeId: string) => {
+        const requestId = ++placeRequestRef.current;
+        setState('place-loading');
+
         const place = await getPlaceByIdAsync(placeId);
-        if (!place) return;
+
+        if (requestId !== placeRequestRef.current) {
+            return;
+        }
+
+        if (!place) {
+            setState('country-view');
+            return;
+        }
 
         setSelectedPlace(place);
         setState('place-view');
@@ -86,6 +99,7 @@ export function ExplorationView() {
 
     // Handle closing place view
     const handlePlaceClose = useCallback(() => {
+        placeRequestRef.current += 1;
         setSelectedPlace(null);
         setState('country-view');
 
@@ -98,6 +112,7 @@ export function ExplorationView() {
 
     // Handle closing country view
     const handleCountryClose = useCallback(() => {
+        placeRequestRef.current += 1;
         setSelectedCountry(null);
         setSelectedPlace(null);
         setState('map');
@@ -135,12 +150,14 @@ export function ExplorationView() {
                         onCountryClick={handleCountrySelect}
                         onPlaceClick={handlePlaceSelect}
                         selectedCountry={selectedCountry?.id}
-                        highlightPlaces={state === 'country-view' || state === 'place-view'}
+                        highlightPlaces={
+                            state === 'country-view' || state === 'place-loading' || state === 'place-view'
+                        }
                     />
 
                     {/* Map darkening overlay for focus effect */}
                     <AnimatePresence>
-                        {state === 'place-view' && (
+                        {(state === 'place-loading' || state === 'place-view') && (
                             <motion.div
                                 className="absolute inset-0 bg-black/40 backdrop-blur-[2px] pointer-events-none"
                                 initial={{ opacity: 0 }}
@@ -175,6 +192,22 @@ export function ExplorationView() {
                                 />
                             )}
 
+                            {/* Place loading state */}
+                            {state === 'place-loading' && (
+                                <motion.div
+                                    key="place-loading"
+                                    className="absolute inset-0 z-40 flex items-center justify-center"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                >
+                                    <div className="px-6 py-4 rounded-2xl bg-neutral-900/80 backdrop-blur-xl border border-white/10 text-white flex items-center gap-3 shadow-xl">
+                                        <div className="w-5 h-5 border-2 border-accent-400 border-t-transparent rounded-full animate-spin" />
+                                        <span className="text-sm text-neutral-200">Preparing place experience</span>
+                                    </div>
+                                </motion.div>
+                            )}
+
                             {/* Place Detail Overlay */}
                             {state === 'place-view' && selectedPlace && (
                                 <PlaceOverlay
@@ -191,16 +224,18 @@ export function ExplorationView() {
                         </div>
 
                         {/* Back button when in country/place view */}
-                        {(state === 'country-view' || state === 'place-view') && (
+                        {(state === 'country-view' || state === 'place-loading' || state === 'place-view') && (
                             <motion.button
                                 className="absolute top-6 left-6 z-30 flex items-center gap-2 px-4 py-2 glass-panel rounded-full text-sm text-neutral-700 hover:text-neutral-900 transition-colors shadow-lg"
-                                onClick={state === 'place-view' ? handlePlaceClose : handleCountryClose}
+                                onClick={state === 'country-view' ? handleCountryClose : handlePlaceClose}
                                 initial={{ opacity: 0, x: -20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 exit={{ opacity: 0, x: -20 }}
                             >
-                                <span>←</span>
-                                <span>{state === 'place-view' ? 'Back to Country' : 'Back to World'}</span>
+                                <span></span>
+                                <span>
+                                    {state === 'country-view' ? 'Back to World' : 'Back to Country'}
+                                </span>
                             </motion.button>
                         )}
                     </div>
