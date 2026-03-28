@@ -1,0 +1,15 @@
+{
+    "id": "PL",
+    "name": "Poland",
+    "coords": [
+        52.2297,
+        21.0122
+    ],
+    "teaser": "Historic cities and subterranean wonders",
+    "ambience": "/sounds/ambient/poland-ambient.mp3",
+    "places": [
+        "wieliczka-salt-mine"
+    ],
+    "flag": "",
+    "dramaticIntro": "Poland preserves resilience in rebuilt skylines and deep mining heritage."
+}

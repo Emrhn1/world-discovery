@@ -1,0 +1,15 @@
+{
+    "id": "MY",
+    "name": "Malaysia",
+    "coords": [
+        3.139,
+        101.6869
+    ],
+    "teaser": "Rainforests, reefs, and high peaks",
+    "ambience": "/sounds/ambient/malaysia-ambient.mp3",
+    "places": [
+        "mount-kinabalu"
+    ],
+    "flag": "",
+    "dramaticIntro": "Malaysia's biodiversity rises from tropical seas to cloud-wrapped summits."
+}

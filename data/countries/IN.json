@@ -1,0 +1,15 @@
+{
+    "id": "IN",
+    "name": "India",
+    "coords": [
+        28.6139,
+        77.209
+    ],
+    "teaser": "Sacred rivers, empires, and timeless monuments",
+    "ambience": "/sounds/ambient/india-ambient.mp3",
+    "places": [
+        "taj-mahal"
+    ],
+    "flag": "",
+    "dramaticIntro": "Across palaces and pilgrimage routes, India carries millennia of memory."
+}

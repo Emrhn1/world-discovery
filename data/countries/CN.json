@@ -1,0 +1,15 @@
+{
+    "id": "CN",
+    "name": "China",
+    "coords": [
+        39.9042,
+        116.4074
+    ],
+    "teaser": "Dynasties, mountains, and vast frontiers",
+    "ambience": "/sounds/ambient/china-ambient.mp3",
+    "places": [
+        "great-wall"
+    ],
+    "flag": "",
+    "dramaticIntro": "From imperial capitals to remote passes, China unfolds at monumental scale."
+}

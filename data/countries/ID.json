@@ -1,0 +1,15 @@
+{
+    "id": "ID",
+    "name": "Indonesia",
+    "coords": [
+        -6.2088,
+        106.8456
+    ],
+    "teaser": "Volcanic islands and sacred monuments",
+    "ambience": "/sounds/ambient/indonesia-ambient.mp3",
+    "places": [
+        "borobudur"
+    ],
+    "flag": "",
+    "dramaticIntro": "Across the archipelago, Indonesia connects spiritual heritage with dramatic geographies."
+}

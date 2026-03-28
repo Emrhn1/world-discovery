@@ -1,0 +1,15 @@
+{
+    "id": "CO",
+    "name": "Colombia",
+    "coords": [
+        4.711,
+        -74.0721
+    ],
+    "teaser": "Cloud forests, valleys, and living culture",
+    "ambience": "/sounds/ambient/colombia-ambient.mp3",
+    "places": [
+        "cocora-valley"
+    ],
+    "flag": "",
+    "dramaticIntro": "Colombia's mountain ecosystems preserve extraordinary biodiversity and local traditions."
+}

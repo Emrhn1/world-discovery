@@ -1,0 +1,15 @@
+{
+    "id": "HU",
+    "name": "Hungary",
+    "coords": [
+        47.4979,
+        19.0402
+    ],
+    "teaser": "Danube vistas and imperial architecture",
+    "ambience": "/sounds/ambient/hungary-ambient.mp3",
+    "places": [
+        "buda-castle"
+    ],
+    "flag": "",
+    "dramaticIntro": "Hungary's royal past rises above the river in layered fortifications and palaces."
+}

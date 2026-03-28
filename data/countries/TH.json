@@ -1,0 +1,15 @@
+{
+    "id": "TH",
+    "name": "Thailand",
+    "coords": [
+        13.7563,
+        100.5018
+    ],
+    "teaser": "Temple cities and tropical landscapes",
+    "ambience": "/sounds/ambient/thailand-ambient.mp3",
+    "places": [
+        "ayutthaya-historical-park"
+    ],
+    "flag": "",
+    "dramaticIntro": "Thailand's historic capitals still glow through ruined towers and river plains."
+}

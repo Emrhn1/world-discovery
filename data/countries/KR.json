@@ -1,0 +1,15 @@
+{
+    "id": "KR",
+    "name": "South Korea",
+    "coords": [
+        37.5665,
+        126.978
+    ],
+    "teaser": "Palaces, peaks, and modern skylines",
+    "ambience": "/sounds/ambient/korea-ambient.mp3",
+    "places": [
+        "gyeongbokgung-palace"
+    ],
+    "flag": "",
+    "dramaticIntro": "Korean heritage lives between royal gates and high-tech streets."
+}

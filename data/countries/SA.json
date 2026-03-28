@@ -1,0 +1,15 @@
+{
+    "id": "SA",
+    "name": "Saudi Arabia",
+    "coords": [
+        24.7136,
+        46.6753
+    ],
+    "teaser": "Desert trade routes and carved tombs",
+    "ambience": "/sounds/ambient/saudi-ambient.mp3",
+    "places": [
+        "hegra-al-ula"
+    ],
+    "flag": "",
+    "dramaticIntro": "Ancient caravan worlds survive in sandstone landscapes and oasis settlements."
+}

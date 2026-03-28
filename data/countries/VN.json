@@ -1,0 +1,15 @@
+{
+    "id": "VN",
+    "name": "Vietnam",
+    "coords": [
+        21.0278,
+        105.8342
+    ],
+    "teaser": "Karst seascapes and layered traditions",
+    "ambience": "/sounds/ambient/vietnam-ambient.mp3",
+    "places": [
+        "ha-long-bay"
+    ],
+    "flag": "",
+    "dramaticIntro": "Vietnam's coasts and highlands hold stories shaped by monsoon, trade, and resilience."
+}

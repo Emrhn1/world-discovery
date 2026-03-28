@@ -1,0 +1,15 @@
+{
+    "id": "KE",
+    "name": "Kenya",
+    "coords": [
+        -1.2921,
+        36.8219
+    ],
+    "teaser": "Savannas, rift valleys, and wildlife migrations",
+    "ambience": "/sounds/ambient/kenya-ambient.mp3",
+    "places": [
+        "maasai-mara"
+    ],
+    "flag": "",
+    "dramaticIntro": "Kenya's landscapes host one of the planet's most powerful wildlife spectacles."
+}

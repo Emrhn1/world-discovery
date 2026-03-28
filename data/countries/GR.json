@@ -1,0 +1,15 @@
+{
+    "id": "GR",
+    "name": "Greece",
+    "coords": [
+        37.9838,
+        23.7275
+    ],
+    "teaser": "Classical ruins and Aegean light",
+    "ambience": "/sounds/ambient/greece-ambient.mp3",
+    "places": [
+        "acropolis-of-athens"
+    ],
+    "flag": "",
+    "dramaticIntro": "Greek antiquity still stands above modern streets in stone and myth."
+}

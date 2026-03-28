@@ -1,0 +1,15 @@
+{
+    "id": "MA",
+    "name": "Morocco",
+    "coords": [
+        34.0209,
+        -6.8416
+    ],
+    "teaser": "Kasbah routes and desert gateways",
+    "ambience": "/sounds/ambient/morocco-ambient.mp3",
+    "places": [
+        "ait-benhaddou"
+    ],
+    "flag": "",
+    "dramaticIntro": "Morocco's fortified settlements connect mountain passes and Saharan trade memory."
+}

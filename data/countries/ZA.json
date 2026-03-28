@@ -1,0 +1,15 @@
+{
+    "id": "ZA",
+    "name": "South Africa",
+    "coords": [
+        -25.7479,
+        28.2293
+    ],
+    "teaser": "Coastlines, plateaus, and dramatic peaks",
+    "ambience": "/sounds/ambient/southafrica-ambient.mp3",
+    "places": [
+        "table-mountain"
+    ],
+    "flag": "",
+    "dramaticIntro": "South Africa's terrains range from ocean cliffs to biodiversity-rich highlands."
+}

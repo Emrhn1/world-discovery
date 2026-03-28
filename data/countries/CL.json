@@ -1,0 +1,15 @@
+{
+    "id": "CL",
+    "name": "Chile",
+    "coords": [
+        -33.4489,
+        -70.6693
+    ],
+    "teaser": "Andean extremes and Patagonian wilderness",
+    "ambience": "/sounds/ambient/chile-ambient.mp3",
+    "places": [
+        "torres-del-paine"
+    ],
+    "flag": "",
+    "dramaticIntro": "Chile stretches from deserts to glaciers, stitching together dramatic ecological worlds."
+}

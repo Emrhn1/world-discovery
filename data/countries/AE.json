@@ -1,0 +1,15 @@
+{
+    "id": "AE",
+    "name": "United Arab Emirates",
+    "coords": [
+        24.4539,
+        54.3773
+    ],
+    "teaser": "Desert horizons and modern landmarks",
+    "ambience": "/sounds/ambient/uae-ambient.mp3",
+    "places": [
+        "sheikh-zayed-grand-mosque"
+    ],
+    "flag": "",
+    "dramaticIntro": "In the Gulf, traditional geometry meets contemporary monumentality."
+}

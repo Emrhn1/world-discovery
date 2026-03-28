@@ -1,0 +1,15 @@
+{
+    "id": "CZ",
+    "name": "Czech Republic",
+    "coords": [
+        50.0755,
+        14.4378
+    ],
+    "teaser": "Gothic skylines and riverfront legends",
+    "ambience": "/sounds/ambient/czech-ambient.mp3",
+    "places": [
+        "charles-bridge"
+    ],
+    "flag": "",
+    "dramaticIntro": "Bohemian history unfolds across bridges, castles, and cathedral towers."
+}

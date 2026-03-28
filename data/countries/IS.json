@@ -1,0 +1,15 @@
+{
+    "id": "IS",
+    "name": "Iceland",
+    "coords": [
+        64.1466,
+        -21.9426
+    ],
+    "teaser": "Volcanic rifts and Arctic light",
+    "ambience": "/sounds/ambient/iceland-ambient.mp3",
+    "places": [
+        "thingvellir"
+    ],
+    "flag": "",
+    "dramaticIntro": "Iceland's geology is alive, where tectonic boundaries surface in valleys and lava plains."
+}

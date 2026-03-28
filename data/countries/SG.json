@@ -1,0 +1,15 @@
+{
+    "id": "SG",
+    "name": "Singapore",
+    "coords": [
+        1.3521,
+        103.8198
+    ],
+    "teaser": "Urban innovation and tropical green",
+    "ambience": "/sounds/ambient/singapore-ambient.mp3",
+    "places": [
+        "singapore-botanic-gardens"
+    ],
+    "flag": "",
+    "dramaticIntro": "Singapore balances dense city life with carefully cultivated ecological spaces."
+}
