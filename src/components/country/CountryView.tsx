@@ -3,7 +3,11 @@
 import { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { getPlacesByCountryAndTypeAsync } from '@/lib/dataAsync';
+import {
+    getPlaceCountsByCountryAsync,
+    getPlacesByCountryAndTypeAsync,
+    prefetchPlaceByIdAsync,
+} from '@/lib/dataAsync';
 import type { Country, PlaceType, Place } from '@/types';
 
 interface CountryViewProps {
@@ -19,9 +23,9 @@ interface ExplorationLayer {
 }
 
 const EXPLORATION_LAYERS: ExplorationLayer[] = [
-    { type: 'historical', label: 'Historical', icon: '🏛️' },
-    { type: 'nature', label: 'Nature', icon: '🌿' },
-    { type: 'city', label: 'Cities', icon: '🏙️' },
+    { type: 'historical', label: 'Historical', icon: '' },
+    { type: 'nature', label: 'Nature', icon: '' },
+    { type: 'city', label: 'Cities', icon: '' },
 ];
 
 /**
@@ -43,17 +47,10 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
         let cancelled = false;
 
         const loadLayerCounts = async () => {
-            const results = await Promise.all(
-                EXPLORATION_LAYERS.map((layer) => getPlacesByCountryAndTypeAsync(country.id, layer.type))
-            );
-
-            if (cancelled) return;
-
-            setLayerCounts({
-                historical: results[0].length,
-                nature: results[1].length,
-                city: results[2].length,
-            });
+            const counts = await getPlaceCountsByCountryAsync(country.id);
+            if (!cancelled) {
+                setLayerCounts(counts);
+            }
         };
 
         loadLayerCounts().catch(() => {
@@ -79,6 +76,7 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
             const places = await getPlacesByCountryAndTypeAsync(country.id, activeLayer);
             if (!cancelled) {
                 setActivePlaces(places);
+                places.forEach((place) => prefetchPlaceByIdAsync(place.id));
             }
         };
 
@@ -109,14 +107,14 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
                 transition={{ delay: 0.2 }}
             >
                 <div className="flex items-center gap-3 px-5 py-3 bg-white/90 backdrop-blur-md rounded-2xl border border-neutral-200 shadow-lg">
-    {country.flag && (
-        <span className="text-3xl">{country.flag}</span>
-    )}
-    <div>
-        <h2 className="font-display text-xl text-neutral-900">{country.name}</h2>
-        <p className="text-sm text-neutral-600">{country.teaser}</p>
-    </div>
-</div>
+                    {country.flag && (
+                        <span className="text-3xl">{country.flag}</span>
+                    )}
+                    <div>
+                        <h2 className="font-display text-xl text-neutral-900">{country.name}</h2>
+                        <p className="text-sm text-neutral-600">{country.teaser}</p>
+                    </div>
+                </div>
             </motion.div>
 
             {/* Exploration layers - floating pills, bottom left */}
@@ -127,24 +125,24 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
                 exit={{ y: 30, opacity: 0 }}
                 transition={{ delay: 0.3 }}
             >
-               <p className="text-xs uppercase tracking-wider text-neutral-600 mb-3 ml-1">
-    Explore
-</p>
+                <p className="text-xs uppercase tracking-wider text-neutral-600 mb-3 ml-1">
+                    Explore
+                </p>
                 <div className="flex gap-2">
                     {availableLayers.map((layer, index) => (
                         <motion.button
                             key={layer.type}
-                            onClick={() => setActiveLayer(
-                                activeLayer === layer.type ? null : layer.type
-                            )}
+                            onClick={() =>
+                                setActiveLayer(activeLayer === layer.type ? null : layer.type)
+                            }
                             className={cn(
-    'flex items-center gap-2 px-4 py-3 rounded-xl',
-    'backdrop-blur-md border transition-all duration-300',
-    'hover:scale-105 focus:outline-none shadow-sm',
-    activeLayer === layer.type
-        ? 'bg-neutral-900 border-neutral-900 text-white'
-        : 'bg-white/90 border-neutral-300 text-neutral-700 hover:border-neutral-400'
-)}
+                                'flex items-center gap-2 px-4 py-3 rounded-xl',
+                                'backdrop-blur-md border transition-all duration-300',
+                                'hover:scale-105 focus:outline-none shadow-sm',
+                                activeLayer === layer.type
+                                    ? 'bg-neutral-900 border-neutral-900 text-white'
+                                    : 'bg-white/90 border-neutral-300 text-neutral-700 hover:border-neutral-400'
+                            )}
                             initial={{ y: 20, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.4 + index * 0.1 }}
@@ -153,9 +151,9 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
                         >
                             <span className="text-lg">{layer.icon}</span>
                             <span className="text-sm font-medium">{layer.label}</span>
-                           <span className="text-xs px-2 py-0.5 rounded-full bg-neutral-200 text-neutral-700">
-    {layerCounts[layer.type]}
-</span>
+                            <span className="text-xs px-2 py-0.5 rounded-full bg-neutral-200 text-neutral-700">
+                                {layerCounts[layer.type]}
+                            </span>
                         </motion.button>
                     ))}
                 </div>
@@ -175,16 +173,19 @@ export function CountryView({ country, onPlaceSelect, onClose: _onClose }: Count
                                 <motion.button
                                     key={place.id}
                                     onClick={() => onPlaceSelect(place.id)}
-                                    onMouseEnter={() => setHoveredPlace(place)}
+                                    onMouseEnter={() => {
+                                        setHoveredPlace(place);
+                                        prefetchPlaceByIdAsync(place.id);
+                                    }}
                                     onMouseLeave={() => setHoveredPlace(null)}
                                     className={cn(
-    'px-4 py-2 rounded-xl',
-    'bg-white/90 backdrop-blur-md border border-neutral-300',
-    'text-neutral-900 text-sm font-medium shadow-sm',
-    'hover:bg-neutral-100 hover:border-neutral-400',
-    'transition-all duration-200',
-    'focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900'
-)}
+                                        'px-4 py-2 rounded-xl',
+                                        'bg-white/90 backdrop-blur-md border border-neutral-300',
+                                        'text-neutral-900 text-sm font-medium shadow-sm',
+                                        'hover:bg-neutral-100 hover:border-neutral-400',
+                                        'transition-all duration-200',
+                                        'focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-900'
+                                    )}
                                     initial={{ scale: 0.8, opacity: 0 }}
                                     animate={{ scale: 1, opacity: 1 }}
                                     transition={{ delay: index * 0.05 }}
