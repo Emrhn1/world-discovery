@@ -7,17 +7,25 @@ const CACHE_HEADERS = {
   'Cache-Control': 'public, max-age=60, s-maxage=300, stale-while-revalidate=600',
 };
 
-export async function GET() {
+interface RouteParams {
+  params: {
+    id: string;
+  };
+}
+
+export async function GET(_: Request, { params }: RouteParams) {
   try {
-    const countries = await getRepository().getCountries();
-    return NextResponse.json(
-      { items: countries, total: countries.length },
-      { headers: CACHE_HEADERS }
-    );
+    const country = await getRepository().getCountryById(params.id);
+
+    if (!country) {
+      return NextResponse.json({ error: 'Country not found' }, { status: 404 });
+    }
+
+    return NextResponse.json(country, { headers: CACHE_HEADERS });
   } catch (error) {
     return NextResponse.json(
       {
-        error: 'Failed to fetch countries',
+        error: 'Failed to fetch country',
         details: error instanceof Error ? error.message : 'Unknown error',
       },
       { status: 500 }
