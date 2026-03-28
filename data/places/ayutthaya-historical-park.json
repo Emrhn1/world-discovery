@@ -1,0 +1,42 @@
+{
+    "id": "ayutthaya-historical-park",
+    "name": "Ayutthaya Historical Park",
+    "countryId": "TH",
+    "coords": [
+        14.3556,
+        100.5683
+    ],
+    "type": "historical",
+    "teaser": "Ruins of a once-global Siamese capital",
+    "shortStory": "Ayutthaya was a major Southeast Asian power before its fall in 1767, leaving a landscape of monasteries and prangs.",
+    "bullets": [
+        "Former capital of Siam",
+        "UNESCO World Heritage",
+        "Known for temple ruins"
+    ],
+    "discoveries": [
+        {
+            "hook": "Ruins of a once-global Siamese capital",
+            "story": "Ayutthaya was a major Southeast Asian power before its fall in 1767, leaving a landscape of monasteries and prangs.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Ayutthaya_Thailand_2004.jpg/1920px-Ayutthaya_Thailand_2004.jpg",
+            "alt": "Ayutthaya Historical Park  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/%E0%B9%80%E0%B8%A8%E0%B8%B5%E0%B8%A2%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9E%E0%B8%B8%E0%B8%97%E0%B8%98%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B9%83%E0%B8%99%E0%B8%A3%E0%B8%B2%E0%B8%81%E0%B9%82%E0%B8%9E%E0%B8%98%E0%B8%B4%E0%B9%8C.jpg/1920px-%E0%B9%80%E0%B8%A8%E0%B8%B5%E0%B8%A2%E0%B8%A3%E0%B8%9E%E0%B8%A3%E0%B8%B0%E0%B8%9E%E0%B8%B8%E0%B8%97%E0%B8%98%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B9%83%E0%B8%99%E0%B8%A3%E0%B8%B2%E0%B8%81%E0%B9%82%E0%B8%9E%E0%B8%98%E0%B8%B4%E0%B9%8C.jpg",
+            "alt": "Ayutthaya Historical Park  view 2"
+        }
+    ],
+    "ambience": "ancient"
+}

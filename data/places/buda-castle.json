@@ -1,0 +1,42 @@
+{
+    "id": "buda-castle",
+    "name": "Buda Castle",
+    "countryId": "HU",
+    "coords": [
+        47.4967,
+        19.0399
+    ],
+    "type": "historical",
+    "teaser": "Palace complex overlooking the Danube",
+    "shortStory": "Buda Castle evolved through medieval, Ottoman, and Habsburg periods, reflecting Budapest's political transformations.",
+    "bullets": [
+        "UNESCO World Heritage district",
+        "Multiple reconstruction eras",
+        "Historic royal residence"
+    ],
+    "discoveries": [
+        {
+            "hook": "Palace complex overlooking the Danube",
+            "story": "Buda Castle evolved through medieval, Ottoman, and Habsburg periods, reflecting Budapest's political transformations.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Buda_Castle_by_night_2.jpg/1920px-Buda_Castle_by_night_2.jpg",
+            "alt": "Buda Castle  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/20190502_Zamek_w_Budapeszcie_0647_1862_DxO.jpg/1920px-20190502_Zamek_w_Budapeszcie_0647_1862_DxO.jpg",
+            "alt": "Buda Castle  view 2"
+        }
+    ],
+    "ambience": "ancient"
+}

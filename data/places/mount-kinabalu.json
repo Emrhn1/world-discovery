@@ -1,0 +1,42 @@
+{
+    "id": "mount-kinabalu",
+    "name": "Mount Kinabalu",
+    "countryId": "MY",
+    "coords": [
+        6.075,
+        116.558
+    ],
+    "type": "nature",
+    "teaser": "Granite giant above Borneo's forests",
+    "shortStory": "Mount Kinabalu anchors one of Southeast Asia's richest montane ecosystems, with rapid elevation-driven biodiversity changes.",
+    "bullets": [
+        "Highest peak in Malaysia",
+        "Kinabalu Park UNESCO site",
+        "Endemic alpine flora"
+    ],
+    "discoveries": [
+        {
+            "hook": "Granite giant above Borneo's forests",
+            "story": "Mount Kinabalu anchors one of Southeast Asia's richest montane ecosystems, with rapid elevation-driven biodiversity changes.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Morning_view_of_Mount_Kinabalu_in_Malaysia%2C_with_its_peak_clearly_visible.jpg/1920px-Morning_view_of_Mount_Kinabalu_in_Malaysia%2C_with_its_peak_clearly_visible.jpg",
+            "alt": "Mount Kinabalu  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/St._John%27s_Peak_Mount_Kinabalu_3.jpg/1920px-St._John%27s_Peak_Mount_Kinabalu_3.jpg",
+            "alt": "Mount Kinabalu  view 2"
+        }
+    ],
+    "ambience": "nature"
+}

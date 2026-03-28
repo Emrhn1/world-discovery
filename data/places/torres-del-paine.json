@@ -1,0 +1,42 @@
+{
+    "id": "torres-del-paine",
+    "name": "Torres del Paine",
+    "countryId": "CL",
+    "coords": [
+        -50.9423,
+        -73.4068
+    ],
+    "type": "nature",
+    "teaser": "Granite towers above glacial lakes",
+    "shortStory": "Torres del Paine is famed for jagged massifs, steppe valleys, and ice-fed turquoise waters in southern Patagonia.",
+    "bullets": [
+        "Patagonian trekking icon",
+        "Glaciers and granite formations",
+        "High biodiversity in extreme latitudes"
+    ],
+    "discoveries": [
+        {
+            "hook": "Granite towers above glacial lakes",
+            "story": "Torres del Paine is famed for jagged massifs, steppe valleys, and ice-fed turquoise waters in southern Patagonia.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Cuernos_del_Paine_in_Torres_del_Paine_National_Park.jpg/1920px-Cuernos_del_Paine_in_Torres_del_Paine_National_Park.jpg",
+            "alt": "Torres del Paine  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Torres_del_Paine_-_Janvier_2010.jpg/1920px-Torres_del_Paine_-_Janvier_2010.jpg",
+            "alt": "Torres del Paine  view 2"
+        }
+    ],
+    "ambience": "nature"
+}

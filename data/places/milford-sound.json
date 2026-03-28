@@ -29,8 +29,13 @@
     "media": [
         {
             "type": "image",
-            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=nz",
-            "alt": "Milford Sound view"
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Milford_Sound_in_Fiordland_National_Park_01.jpg/1920px-Milford_Sound_in_Fiordland_National_Park_01.jpg",
+            "alt": "Milford Sound  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Cascada_Stirling%2C_Milford_Sound-Nueva_Zelanda07.jpg/960px-Cascada_Stirling%2C_Milford_Sound-Nueva_Zelanda07.jpg",
+            "alt": "Milford Sound  view 2"
         }
     ],
     "ambience": "nature"

@@ -1,0 +1,42 @@
+{
+    "id": "taj-mahal",
+    "name": "Taj Mahal",
+    "countryId": "IN",
+    "coords": [
+        27.1751,
+        78.0421
+    ],
+    "type": "historical",
+    "teaser": "A marble elegy beside the Yamuna",
+    "shortStory": "Built by Shah Jahan in memory of Mumtaz Mahal, the Taj Mahal is both imperial statement and intimate grief carved in white marble.",
+    "bullets": [
+        "UNESCO World Heritage",
+        "Mughal architectural masterpiece",
+        "Symmetry and calligraphy in marble"
+    ],
+    "discoveries": [
+        {
+            "hook": "A marble elegy beside the Yamuna",
+            "story": "Built by Shah Jahan in memory of Mumtaz Mahal, the Taj Mahal is both imperial statement and intimate grief carved in white marble.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Taj_Mahal%2C_Agra%2C_India_edit2.jpg/1920px-Taj_Mahal%2C_Agra%2C_India_edit2.jpg",
+            "alt": "Taj Mahal  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Taj_Mahal_Sunset.jpg/1920px-Taj_Mahal_Sunset.jpg",
+            "alt": "Taj Mahal  view 2"
+        }
+    ],
+    "ambience": "ancient"
+}

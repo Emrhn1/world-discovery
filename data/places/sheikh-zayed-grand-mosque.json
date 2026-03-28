@@ -1,0 +1,42 @@
+{
+    "id": "sheikh-zayed-grand-mosque",
+    "name": "Sheikh Zayed Grand Mosque",
+    "countryId": "AE",
+    "coords": [
+        24.4128,
+        54.4746
+    ],
+    "type": "historical",
+    "teaser": "White domes and intricate marble craft",
+    "shortStory": "The mosque blends Islamic architectural traditions with contemporary design and artisan techniques from many regions.",
+    "bullets": [
+        "82 domes and reflective pools",
+        "One of the world's largest hand-knotted carpets",
+        "Major cultural landmark"
+    ],
+    "discoveries": [
+        {
+            "hook": "White domes and intricate marble craft",
+            "story": "The mosque blends Islamic architectural traditions with contemporary design and artisan techniques from many regions.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Sheikh_Zayed_Grand_Mosque_in_Abu_Dhabi_-_panoramio.jpg",
+            "alt": "Sheikh Zayed Grand Mosque  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/0/06/Gradens_Sheikh_Zayed_Grand_Mosque_in_Abu_Dhabi_-_panoramio.jpg",
+            "alt": "Sheikh Zayed Grand Mosque  view 2"
+        }
+    ],
+    "ambience": "ancient"
+}

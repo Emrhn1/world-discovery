@@ -29,8 +29,13 @@
     "media": [
         {
             "type": "image",
-            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=no",
-            "alt": "Geirangerfjord view"
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Geirangerfjord_LC0188.jpg/960px-Geirangerfjord_LC0188.jpg",
+            "alt": "Geirangerfjord  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Geirangerfjord_from_%C3%98rnesvingen%2C_2013_June.jpg/1920px-Geirangerfjord_from_%C3%98rnesvingen%2C_2013_June.jpg",
+            "alt": "Geirangerfjord  view 2"
         }
     ],
     "ambience": "nature"

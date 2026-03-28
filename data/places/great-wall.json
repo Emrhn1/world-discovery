@@ -1,0 +1,42 @@
+{
+    "id": "great-wall",
+    "name": "Great Wall",
+    "countryId": "CN",
+    "coords": [
+        40.4319,
+        116.5704
+    ],
+    "type": "historical",
+    "teaser": "Stone ridges tracing the horizon",
+    "shortStory": "The Great Wall links fortifications built across centuries, reflecting military strategy, labor, and imperial ambition.",
+    "bullets": [
+        "Thousands of kilometers of walls",
+        "Built across multiple dynasties",
+        "UNESCO World Heritage"
+    ],
+    "discoveries": [
+        {
+            "hook": "Stone ridges tracing the horizon",
+            "story": "The Great Wall links fortifications built across centuries, reflecting military strategy, labor, and imperial ambition.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Badaling_China_Great-Wall-of-China-01.jpg/1920px-Badaling_China_Great-Wall-of-China-01.jpg",
+            "alt": "Great Wall  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/20090529_Great_Wall_8185.jpg/1920px-20090529_Great_Wall_8185.jpg",
+            "alt": "Great Wall  view 2"
+        }
+    ],
+    "ambience": "ancient"
+}

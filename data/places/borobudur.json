@@ -1,0 +1,42 @@
+{
+    "id": "borobudur",
+    "name": "Borobudur",
+    "countryId": "ID",
+    "coords": [
+        -7.6079,
+        110.2038
+    ],
+    "type": "historical",
+    "teaser": "A Buddhist mandala in volcanic stone",
+    "shortStory": "Constructed in the 8th9th centuries, Borobudur encodes cosmology through terraces, reliefs, and stupas.",
+    "bullets": [
+        "Largest Buddhist monument",
+        "UNESCO World Heritage",
+        "Relief panels narrate doctrine"
+    ],
+    "discoveries": [
+        {
+            "hook": "A Buddhist mandala in volcanic stone",
+            "story": "Constructed in the 8th9th centuries, Borobudur encodes cosmology through terraces, reliefs, and stupas.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Borobudur-Nothwest-view.jpg/1920px-Borobudur-Nothwest-view.jpg",
+            "alt": "Borobudur  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Borobudur-Temple-Park_Indonesia_Stupas-of-Borobudur-12.jpg/1920px-Borobudur-Temple-Park_Indonesia_Stupas-of-Borobudur-12.jpg",
+            "alt": "Borobudur  view 2"
+        }
+    ],
+    "ambience": "ancient"
+}

@@ -1,0 +1,42 @@
+{
+    "id": "table-mountain",
+    "name": "Table Mountain",
+    "countryId": "ZA",
+    "coords": [
+        -33.9628,
+        18.4098
+    ],
+    "type": "nature",
+    "teaser": "A flat-topped sentinel over Cape Town",
+    "shortStory": "Table Mountain is a geological icon and part of the Cape Floristic Region, one of the world's biodiversity hotspots.",
+    "bullets": [
+        "Part of Table Mountain National Park",
+        "Fynbos ecosystem",
+        "Cableway and summit trails"
+    ],
+    "discoveries": [
+        {
+            "hook": "A flat-topped sentinel over Cape Town",
+            "story": "Table Mountain is a geological icon and part of the Cape Floristic Region, one of the world's biodiversity hotspots.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Cape_Town_%28ZA%29%2C_Table_Mountain_--_2024_--_2825.jpg/1920px-Cape_Town_%28ZA%29%2C_Table_Mountain_--_2024_--_2825.jpg",
+            "alt": "Table Mountain  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Cape_Town_%28ZA%29%2C_Table_Mountain%2C_Seilbahn%2C_Gedenkplatte_--_2024_--_2870.jpg/960px-Cape_Town_%28ZA%29%2C_Table_Mountain%2C_Seilbahn%2C_Gedenkplatte_--_2024_--_2870.jpg",
+            "alt": "Table Mountain  view 2"
+        }
+    ],
+    "ambience": "nature"
+}

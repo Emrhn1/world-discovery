@@ -29,8 +29,13 @@
     "media": [
         {
             "type": "image",
-            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=dk",
-            "alt": "Nyhavn view"
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Kopenhagen_%28DK%29%2C_Nyhavn_--_2017_--_1711.jpg/1920px-Kopenhagen_%28DK%29%2C_Nyhavn_--_2017_--_1711.jpg",
+            "alt": "Nyhavn  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/2018_-_Nyhavn_on_sunset.jpg/1920px-2018_-_Nyhavn_on_sunset.jpg",
+            "alt": "Nyhavn  view 2"
         }
     ],
     "ambience": "ancient"

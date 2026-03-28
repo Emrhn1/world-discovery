@@ -29,8 +29,13 @@
     "media": [
         {
             "type": "image",
-            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=de",
-            "alt": "Neuschwanstein Castle view"
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Neuschwanstein_Castle_from_Marienbr%C3%BCcke%2C_2011_May.jpg/1920px-Neuschwanstein_Castle_from_Marienbr%C3%BCcke%2C_2011_May.jpg",
+            "alt": "Neuschwanstein Castle  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Schloss_Neuschwanstein_2013.jpg/1920px-Schloss_Neuschwanstein_2013.jpg",
+            "alt": "Neuschwanstein Castle  view 2"
         }
     ],
     "ambience": "ancient"

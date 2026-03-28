@@ -1,0 +1,42 @@
+{
+    "id": "maasai-mara",
+    "name": "Maasai Mara",
+    "countryId": "KE",
+    "coords": [
+        -1.4931,
+        35.1439
+    ],
+    "type": "nature",
+    "teaser": "Golden grasslands crossed by the Great Migration",
+    "shortStory": "The Maasai Mara is known for predator-rich ecosystems and seasonal wildebeest migration corridors.",
+    "bullets": [
+        "Part of Serengeti-Mara ecosystem",
+        "Big Five wildlife",
+        "Great Migration crossings"
+    ],
+    "discoveries": [
+        {
+            "hook": "Golden grasslands crossed by the Great Migration",
+            "story": "The Maasai Mara is known for predator-rich ecosystems and seasonal wildebeest migration corridors.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Lions_Family_Portrait_Masai_Mara.jpg/1920px-Lions_Family_Portrait_Masai_Mara.jpg",
+            "alt": "Maasai Mara  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Grey_kestrel_bird_at_the_Maasai_Mara%2C_Kenya_%282014%29.jpg/1280px-Grey_kestrel_bird_at_the_Maasai_Mara%2C_Kenya_%282014%29.jpg",
+            "alt": "Maasai Mara  view 2"
+        }
+    ],
+    "ambience": "nature"
+}

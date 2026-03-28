@@ -1,0 +1,42 @@
+{
+    "id": "ha-long-bay",
+    "name": "Ha Long Bay",
+    "countryId": "VN",
+    "coords": [
+        20.9101,
+        107.1839
+    ],
+    "type": "nature",
+    "teaser": "Limestone towers rising from emerald water",
+    "shortStory": "Ha Long Bay is renowned for thousands of karst islands sculpted by geological time and coastal weather.",
+    "bullets": [
+        "UNESCO World Heritage",
+        "Karst landscape",
+        "Cruise and cave routes"
+    ],
+    "discoveries": [
+        {
+            "hook": "Limestone towers rising from emerald water",
+            "story": "Ha Long Bay is renowned for thousands of karst islands sculpted by geological time and coastal weather.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Halong_Bay_in_Vietnam.jpg",
+            "alt": "Ha Long Bay  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/View_of_sea_from_Titov_Island%2C_Ha_Long_Bay%2C_Vietnam%2C_20240128_1337_3732.jpg/1920px-View_of_sea_from_Titov_Island%2C_Ha_Long_Bay%2C_Vietnam%2C_20240128_1337_3732.jpg",
+            "alt": "Ha Long Bay  view 2"
+        }
+    ],
+    "ambience": "nature"
+}

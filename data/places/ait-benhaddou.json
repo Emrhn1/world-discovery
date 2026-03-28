@@ -1,0 +1,42 @@
+{
+    "id": "ait-benhaddou",
+    "name": "Ait Benhaddou",
+    "countryId": "MA",
+    "coords": [
+        31.047,
+        -7.132
+    ],
+    "type": "historical",
+    "teaser": "An earthen ksar above the Ounila valley",
+    "shortStory": "Ait Benhaddou is a classic pre-Saharan fortified settlement built in rammed earth, illustrating southern Moroccan architecture.",
+    "bullets": [
+        "UNESCO World Heritage",
+        "Traditional earthen construction",
+        "Historic caravan stop"
+    ],
+    "discoveries": [
+        {
+            "hook": "An earthen ksar above the Ounila valley",
+            "story": "Ait Benhaddou is a classic pre-Saharan fortified settlement built in rammed earth, illustrating southern Moroccan architecture.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Ksar_A%C3%AFt_Benhaddou%2C_Marocco_%28%D8%A3%D9%8A%D8%AA_%D8%A8%D9%86_%D8%AD%D8%AF%D9%88%D8%8C_%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8%2C_%E2%B4%B0%E2%B5%A2%E2%B5%9C_%E2%B5%83%E2%B4%B0%E2%B4%B7%E2%B4%B7%E2%B5%93%29.jpg/1920px-Ksar_A%C3%AFt_Benhaddou%2C_Marocco_%28%D8%A3%D9%8A%D8%AA_%D8%A8%D9%86_%D8%AD%D8%AF%D9%88%D8%8C_%D8%A7%D9%84%D9%85%D8%BA%D8%B1%D8%A8%2C_%E2%B4%B0%E2%B5%A2%E2%B5%9C_%E2%B5%83%E2%B4%B0%E2%B4%B7%E2%B4%B7%E2%B5%93%29.jpg",
+            "alt": "Ait Benhaddou  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Camels_at_A%C3%AFt_Benhaddou%2C_Saharan_caravan_route%2C_Morocco_%28%D8%A2%D9%8A%D8%AA_%D8%A8%D9%86_%D8%AD%D8%AF%D9%91%D9%88%2C_%E2%B4%B0%E2%B5%A2%E2%B5%9C_%E2%B5%83%E2%B4%B0%E2%B4%B7%E2%B4%B7%E2%B5%93%29.jpg/1920px-Camels_at_A%C3%AFt_Benhaddou%2C_Saharan_caravan_route%2C_Morocco_%28%D8%A2%D9%8A%D8%AA_%D8%A8%D9%86_%D8%AD%D8%AF%D9%91%D9%88%2C_%E2%B4%B0%E2%B5%A2%E2%B5%9C_%E2%B5%83%E2%B4%B0%E2%B4%B7%E2%B4%B7%E2%B5%93%29.jpg",
+            "alt": "Ait Benhaddou  view 2"
+        }
+    ],
+    "ambience": "ancient"
+}

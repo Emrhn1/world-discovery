@@ -29,8 +29,13 @@
     "media": [
         {
             "type": "image",
-            "src": "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1920&q=80&auto=format&fit=crop&country=ar",
-            "alt": "Perito Moreno Glacier view"
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Perito_Moreno_Glacier_Patagonia_Argentina_Luca_Galuzzi_2005.JPG/1920px-Perito_Moreno_Glacier_Patagonia_Argentina_Luca_Galuzzi_2005.JPG",
+            "alt": "Perito Moreno Glacier  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Trekking_at_Perito_Moreno_Glacier.jpg/1920px-Trekking_at_Perito_Moreno_Glacier.jpg",
+            "alt": "Perito Moreno Glacier  view 2"
         }
     ],
     "ambience": "nature"

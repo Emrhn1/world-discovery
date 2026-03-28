@@ -1,0 +1,42 @@
+{
+    "id": "thingvellir",
+    "name": "Þingvellir National Park",
+    "countryId": "IS",
+    "coords": [
+        64.2559,
+        -21.129
+    ],
+    "type": "nature",
+    "teaser": "Tectonic cliffs and one of the oldest parliaments",
+    "shortStory": "Þingvellir combines geological drama with cultural history as the assembly site of Iceland's early parliament.",
+    "bullets": [
+        "UNESCO World Heritage",
+        "Mid-Atlantic Rift visible on land",
+        "Historic Althing site"
+    ],
+    "discoveries": [
+        {
+            "hook": "Tectonic cliffs and one of the oldest parliaments",
+            "story": "Þingvellir combines geological drama with cultural history as the assembly site of Iceland's early parliament.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Roca_de_la_Ley%2C_Parque_Nacional_de_%C3%9Eingvellir%2C_Su%C3%B0urland%2C_Islandia%2C_2014-08-16%2C_DD_022.JPG/1920px-Roca_de_la_Ley%2C_Parque_Nacional_de_%C3%9Eingvellir%2C_Su%C3%B0urland%2C_Islandia%2C_2014-08-16%2C_DD_022.JPG",
+            "alt": "Þingvellir National Park  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Ca%C3%B1%C3%B3n_Flosagja%2C_Parque_Nacional_de_%C3%9Eingvellir%2C_Su%C3%B0urland%2C_Islandia%2C_2014-08-16%2C_DD_043.JPG/960px-Ca%C3%B1%C3%B3n_Flosagja%2C_Parque_Nacional_de_%C3%9Eingvellir%2C_Su%C3%B0urland%2C_Islandia%2C_2014-08-16%2C_DD_043.JPG",
+            "alt": "Þingvellir National Park  view 2"
+        }
+    ],
+    "ambience": "nature"
+}

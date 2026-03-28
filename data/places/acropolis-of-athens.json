@@ -1,0 +1,42 @@
+{
+    "id": "acropolis-of-athens",
+    "name": "Acropolis of Athens",
+    "countryId": "GR",
+    "coords": [
+        37.9715,
+        23.7267
+    ],
+    "type": "historical",
+    "teaser": "Temples crowning the city on limestone heights",
+    "shortStory": "The Acropolis preserves major monuments of classical Athens, including the Parthenon and Erechtheion.",
+    "bullets": [
+        "Symbol of classical Greek civilization",
+        "Parthenon temple complex",
+        "UNESCO World Heritage"
+    ],
+    "discoveries": [
+        {
+            "hook": "Temples crowning the city on limestone heights",
+            "story": "The Acropolis preserves major monuments of classical Athens, including the Parthenon and Erechtheion.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Attica_06-13_Athens_50_View_from_Philopappos_-_Acropolis_Hill.jpg/1920px-Attica_06-13_Athens_50_View_from_Philopappos_-_Acropolis_Hill.jpg",
+            "alt": "Acropolis of Athens  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Erechtheum_Acropolis_Athens_evening_moon.jpg/1280px-Erechtheum_Acropolis_Athens_evening_moon.jpg",
+            "alt": "Acropolis of Athens  view 2"
+        }
+    ],
+    "ambience": "ancient"
+}

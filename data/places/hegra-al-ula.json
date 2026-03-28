@@ -1,0 +1,42 @@
+{
+    "id": "hegra-al-ula",
+    "name": "Hegra (Al-Ula)",
+    "countryId": "SA",
+    "coords": [
+        26.8,
+        37.95
+    ],
+    "type": "historical",
+    "teaser": "Nabataean tomb facades carved in desert rock",
+    "shortStory": "Hegra preserves monumental tombs and inscriptions from the Nabataean civilization on key incense-trade routes.",
+    "bullets": [
+        "Saudi Arabia's first UNESCO site",
+        "Nabataean rock-cut architecture",
+        "Historic caravan nexus"
+    ],
+    "discoveries": [
+        {
+            "hook": "Nabataean tomb facades carved in desert rock",
+            "story": "Hegra preserves monumental tombs and inscriptions from the Nabataean civilization on key incense-trade routes.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Hegra%2C_Al-Ula%2C_Saudi_Arabia.png/1920px-Hegra%2C_Al-Ula%2C_Saudi_Arabia.png",
+            "alt": "Hegra (Al-Ula)  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Face_rock_at_Hegra%2C_Saudi_Arabia.jpg/1920px-Face_rock_at_Hegra%2C_Saudi_Arabia.jpg",
+            "alt": "Hegra (Al-Ula)  view 2"
+        }
+    ],
+    "ambience": "ancient"
+}

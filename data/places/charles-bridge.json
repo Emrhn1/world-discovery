@@ -1,0 +1,42 @@
+{
+    "id": "charles-bridge",
+    "name": "Charles Bridge",
+    "countryId": "CZ",
+    "coords": [
+        50.0865,
+        14.4114
+    ],
+    "type": "historical",
+    "teaser": "A medieval stone crossing lined with saints",
+    "shortStory": "Commissioned in the 14th century, Charles Bridge connected Prague's Old Town and Lesser Town as a strategic and civic artery.",
+    "bullets": [
+        "Founded under Charles IV",
+        "Baroque statue gallery",
+        "Historic Vltava crossing"
+    ],
+    "discoveries": [
+        {
+            "hook": "A medieval stone crossing lined with saints",
+            "story": "Commissioned in the 14th century, Charles Bridge connected Prague's Old Town and Lesser Town as a strategic and civic artery.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Prague_07-2016_View_from_Petrinska_Tower_img2.jpg/1920px-Prague_07-2016_View_from_Petrinska_Tower_img2.jpg",
+            "alt": "Charles Bridge  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Prague_07-2016_Charles_Bridge_John_of_Nepomuk_statue_img1.jpg/960px-Prague_07-2016_Charles_Bridge_John_of_Nepomuk_statue_img1.jpg",
+            "alt": "Charles Bridge  view 2"
+        }
+    ],
+    "ambience": "ancient"
+}

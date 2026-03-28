@@ -1,0 +1,42 @@
+{
+    "id": "singapore-botanic-gardens",
+    "name": "Singapore Botanic Gardens",
+    "countryId": "SG",
+    "coords": [
+        1.3138,
+        103.8159
+    ],
+    "type": "nature",
+    "teaser": "A tropical research garden in the city",
+    "shortStory": "Founded in 1859, the gardens became a global center for tropical botany and orchid cultivation.",
+    "bullets": [
+        "UNESCO World Heritage",
+        "National Orchid Garden",
+        "Urban biodiversity hub"
+    ],
+    "discoveries": [
+        {
+            "hook": "A tropical research garden in the city",
+            "story": "Founded in 1859, the gardens became a global center for tropical botany and orchid cultivation.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Branches_of_a_Ficus_kurzii_reflecting_in_the_water_at_Singapore_Botanic_Gardens.jpg/1920px-Branches_of_a_Ficus_kurzii_reflecting_in_the_water_at_Singapore_Botanic_Gardens.jpg",
+            "alt": "Singapore Botanic Gardens  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Entrance_National_Orchid_Garden_Singapore_Feb23_D72_25450.jpg/1920px-Entrance_National_Orchid_Garden_Singapore_Feb23_D72_25450.jpg",
+            "alt": "Singapore Botanic Gardens  view 2"
+        }
+    ],
+    "ambience": "nature"
+}

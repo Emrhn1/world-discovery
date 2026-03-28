@@ -1,0 +1,42 @@
+{
+    "id": "wieliczka-salt-mine",
+    "name": "Wieliczka Salt Mine",
+    "countryId": "PL",
+    "coords": [
+        49.9834,
+        20.055
+    ],
+    "type": "historical",
+    "teaser": "Chambers and chapels carved from salt",
+    "shortStory": "Operating since the 13th century, Wieliczka reveals industrial history through underground galleries and sculpted halls.",
+    "bullets": [
+        "UNESCO World Heritage",
+        "Historic salt extraction site",
+        "Underground chapels and lakes"
+    ],
+    "discoveries": [
+        {
+            "hook": "Chambers and chapels carved from salt",
+            "story": "Operating since the 13th century, Wieliczka reveals industrial history through underground galleries and sculpted halls.",
+            "type": "historical-insight",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Wieliczka%2C_Jana_Matejki%3B_Kopalnia_soli-_kierat_konny_w%C4%99gierski%3B_A-580%3B_01.jpg/1920px-Wieliczka%2C_Jana_Matejki%3B_Kopalnia_soli-_kierat_konny_w%C4%99gierski%3B_A-580%3B_01.jpg",
+            "alt": "Wieliczka Salt Mine  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Wieliczka-daVinci.jpg",
+            "alt": "Wieliczka Salt Mine  view 2"
+        }
+    ],
+    "ambience": "ancient"
+}

@@ -1,0 +1,42 @@
+{
+    "id": "cocora-valley",
+    "name": "Cocora Valley",
+    "countryId": "CO",
+    "coords": [
+        4.6372,
+        -75.486
+    ],
+    "type": "nature",
+    "teaser": "Wax palms rising through misty Andean slopes",
+    "shortStory": "Cocora Valley shelters Colombia's iconic wax palms, the world's tallest palm species, within cloud-forest habitats.",
+    "bullets": [
+        "Home of wax palm forests",
+        "Andean cloud-forest landscape",
+        "Hiking routes near Salento"
+    ],
+    "discoveries": [
+        {
+            "hook": "Wax palms rising through misty Andean slopes",
+            "story": "Cocora Valley shelters Colombia's iconic wax palms, the world's tallest palm species, within cloud-forest habitats.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": {
+                "top": "38%",
+                "left": "44%"
+            }
+        }
+    ],
+    "media": [
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Horses_in_Cocora_Valley%2C_Colombia.jpg/1920px-Horses_in_Cocora_Valley%2C_Colombia.jpg",
+            "alt": "Cocora Valley  view 1"
+        },
+        {
+            "type": "image",
+            "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Jeeps_Willys_in_Cocora_Valley%2C_Colombia.jpg/1920px-Jeeps_Willys_in_Cocora_Valley%2C_Colombia.jpg",
+            "alt": "Cocora Valley  view 2"
+        }
+    ],
+    "ambience": "nature"
+}
