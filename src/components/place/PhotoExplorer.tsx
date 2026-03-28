@@ -23,6 +23,7 @@ export function PhotoExplorer({ scenes, onSceneChange }: PhotoExplorerProps) {
     const [viewedHotspots, setViewedHotspots] = useState<Set<string>>(new Set());
     const [direction, setDirection] = useState(0); // -1 left, 1 right
     const [isImageLoaded, setIsImageLoaded] = useState(false);
+    const [resolvedImageSrc, setResolvedImageSrc] = useState('');
     const containerRef = useRef<HTMLDivElement>(null);
     const { playUI, isEnabled } = useSound();
 
@@ -32,6 +33,13 @@ export function PhotoExplorer({ scenes, onSceneChange }: PhotoExplorerProps) {
     const isEmbedVideo =
         sceneMediaType === 'video' &&
         /(youtube\.com|youtu\.be|vimeo\.com)/i.test(scene.src);
+
+    // Reset image source per scene (with runtime fallback support)
+    useEffect(() => {
+        if (sceneMediaType !== 'image') return;
+        setResolvedImageSrc(scene.src);
+        setIsImageLoaded(false);
+    }, [scene.id, scene.src, sceneMediaType]);
 
     // Preload adjacent images
     useEffect(() => {
@@ -94,6 +102,19 @@ export function PhotoExplorer({ scenes, onSceneChange }: PhotoExplorerProps) {
         setIsImageLoaded(true);
     }, []);
 
+    const handleImageError = useCallback(() => {
+        const fallback = `https://picsum.photos/seed/${encodeURIComponent(scene.id)}-fallback/1600/900`;
+
+        if (resolvedImageSrc !== fallback) {
+            setResolvedImageSrc(fallback);
+            setIsImageLoaded(false);
+            return;
+        }
+
+        // Avoid permanent blank screen if fallback also fails
+        setIsImageLoaded(true);
+    }, [resolvedImageSrc, scene.id]);
+
     // Scene counts per scene
     const sceneViewedCount = scene.hotspots.filter(h => viewedHotspots.has(h.id)).length;
     const sceneTotal = scene.hotspots.length;
@@ -125,14 +146,15 @@ export function PhotoExplorer({ scenes, onSceneChange }: PhotoExplorerProps) {
                             <div
                                 className="absolute inset-0 bg-cover bg-center transition-opacity duration-500"
                                 style={{
-                                    backgroundImage: `url(${scene.src})`,
+                                    backgroundImage: `url(${resolvedImageSrc})`,
                                     opacity: isImageLoaded ? 0.7 : 0,
                                 }}
                             />
                             <img
-                                src={scene.src}
+                                src={resolvedImageSrc}
                                 alt={scene.alt || scene.title}
                                 onLoad={handleImageLoad}
+                                onError={handleImageError}
                                 className="hidden"
                             />
                         </>
