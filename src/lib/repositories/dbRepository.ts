@@ -1,4 +1,14 @@
-import type { Country, DiscoveryType, HiddenTrigger, Place, PlaceType, Scene, SceneHotspot, TimelinePhoto, Zone } from '@/types';
+import type {
+  Country,
+  DiscoveryType,
+  HiddenTrigger,
+  Place,
+  PlaceType,
+  Scene,
+  SceneHotspot,
+  TimelinePhoto,
+  Zone,
+} from '@/types';
 import { prisma } from '@/lib/db/prisma';
 import type { DataRepository } from './types';
 
@@ -9,10 +19,14 @@ const mapPlaceType = (type: string): PlaceType => {
 
 const mapDiscoveryType = (type?: string | null): DiscoveryType => {
   switch (type) {
-    case 'engineering_mystery': return 'engineering-mystery';
-    case 'cultural_shift': return 'cultural-shift';
-    case 'turning_point': return 'turning-point';
-    case 'hidden_detail': return 'hidden-detail';
+    case 'engineering_mystery':
+      return 'engineering-mystery';
+    case 'cultural_shift':
+      return 'cultural-shift';
+    case 'turning_point':
+      return 'turning-point';
+    case 'hidden_detail':
+      return 'hidden-detail';
     case 'historical_insight':
     default:
       return 'historical-insight';
@@ -21,10 +35,14 @@ const mapDiscoveryType = (type?: string | null): DiscoveryType => {
 
 const mapHiddenTrigger = (trigger?: string | null): HiddenTrigger | undefined => {
   switch (trigger) {
-    case 'long_hover': return 'long-hover';
-    case 'double_click': return 'double-click';
-    case 'chain': return 'chain';
-    default: return undefined;
+    case 'long_hover':
+      return 'long-hover';
+    case 'double_click':
+      return 'double-click';
+    case 'chain':
+      return 'chain';
+    default:
+      return undefined;
   }
 };
 
@@ -62,7 +80,10 @@ function mapPlace(place: any): Place {
       isHidden: d.isHidden,
       hiddenTrigger: mapHiddenTrigger(d.hiddenTrigger),
       chainRequires: d.chainRequires ?? [],
-      position: d.positionTop && d.positionLeft ? { top: d.positionTop, left: d.positionLeft } : undefined,
+      position:
+        d.positionTop && d.positionLeft
+          ? { top: d.positionTop, left: d.positionLeft }
+          : undefined,
     }));
 
   const scenes: Scene[] = (place.scenes ?? [])
@@ -82,7 +103,7 @@ function mapPlace(place: any): Place {
     .sort((a: any, b: any) => a.displayOrder - b.displayOrder)
     .map((z: any) => ({
       name: z.name,
-      coords: (z.coordsJson as [number, number][]),
+      coords: z.coordsJson as [number, number][],
       color: z.color ?? undefined,
       description: z.description ?? undefined,
     }));
@@ -100,20 +121,69 @@ function mapPlace(place: any): Place {
     scenes,
     timelinePhotos,
     zones,
-    media: (place.media ?? []).sort((a: any, b: any) => a.displayOrder - b.displayOrder).map((m: any) => ({
-      type: m.type,
-      src: m.src,
-      alt: m.alt ?? undefined,
-    })),
+    media: (place.media ?? [])
+      .sort((a: any, b: any) => a.displayOrder - b.displayOrder)
+      .map((m: any) => ({
+        type: m.type,
+        src: m.src,
+        alt: m.alt ?? undefined,
+      })),
     ambience: place.ambience ?? undefined,
   };
 }
 
+function mapPlaceListItem(place: any): Place {
+  return {
+    id: place.id,
+    name: place.name,
+    countryId: place.countryId,
+    coords: [place.latitude, place.longitude],
+    type: mapPlaceType(place.type),
+    teaser: place.teaser,
+    shortStory: place.shortStory ?? '',
+    bullets: place.bullets ?? [],
+    discoveries: [],
+    scenes: [],
+    timelinePhotos: [],
+    zones: [],
+    media: [],
+    ambience: place.ambience ?? undefined,
+  };
+}
+
+const PLACE_LIST_SELECT = {
+  id: true,
+  name: true,
+  countryId: true,
+  latitude: true,
+  longitude: true,
+  type: true,
+  teaser: true,
+  shortStory: true,
+  bullets: true,
+  ambience: true,
+} as const;
+
 export const dbRepository: DataRepository = {
   async getCountries() {
     const [countries, places] = await Promise.all([
-      prisma.country.findMany({ orderBy: { name: 'asc' } }),
-      prisma.place.findMany({ select: { id: true, countryId: true } }),
+      prisma.country.findMany({
+        orderBy: { name: 'asc' },
+        select: {
+          id: true,
+          name: true,
+          latitude: true,
+          longitude: true,
+          teaser: true,
+          ambience: true,
+          flag: true,
+          dramaticIntro: true,
+        },
+      }),
+      prisma.place.findMany({
+        select: { id: true, countryId: true },
+        orderBy: { id: 'asc' },
+      }),
     ]);
 
     const placeMap = places.reduce<Record<string, string[]>>((acc, p) => {
@@ -136,8 +206,24 @@ export const dbRepository: DataRepository = {
 
   async getCountryById(id: string) {
     const [country, places] = await Promise.all([
-      prisma.country.findUnique({ where: { id } }),
-      prisma.place.findMany({ where: { countryId: id }, select: { id: true } }),
+      prisma.country.findUnique({
+        where: { id },
+        select: {
+          id: true,
+          name: true,
+          latitude: true,
+          longitude: true,
+          teaser: true,
+          ambience: true,
+          flag: true,
+          dramaticIntro: true,
+        },
+      }),
+      prisma.place.findMany({
+        where: { countryId: id },
+        select: { id: true },
+        orderBy: { id: 'asc' },
+      }),
     ]);
 
     if (!country) return undefined;
@@ -172,64 +258,40 @@ export const dbRepository: DataRepository = {
   async getPlacesByCountry(countryId: string) {
     const places = await prisma.place.findMany({
       where: { countryId },
-      include: {
-        discoveries: true,
-        scenes: { include: { hotspots: true } },
-        timelinePhotos: true,
-        zones: true,
-        media: true,
-      },
+      select: PLACE_LIST_SELECT,
       orderBy: { name: 'asc' },
     });
 
-    return places.map(mapPlace);
+    return places.map(mapPlaceListItem);
   },
 
   async getPlacesByType(type: Place['type']) {
     const places = await prisma.place.findMany({
       where: { type },
-      include: {
-        discoveries: true,
-        scenes: { include: { hotspots: true } },
-        timelinePhotos: true,
-        zones: true,
-        media: true,
-      },
+      select: PLACE_LIST_SELECT,
       orderBy: { name: 'asc' },
     });
 
-    return places.map(mapPlace);
+    return places.map(mapPlaceListItem);
   },
 
   async getPlacesByCountryAndType(countryId: string, type: Place['type']) {
     const places = await prisma.place.findMany({
       where: { countryId, type },
-      include: {
-        discoveries: true,
-        scenes: { include: { hotspots: true } },
-        timelinePhotos: true,
-        zones: true,
-        media: true,
-      },
+      select: PLACE_LIST_SELECT,
       orderBy: { name: 'asc' },
     });
 
-    return places.map(mapPlace);
+    return places.map(mapPlaceListItem);
   },
 
   async getAllPlaces() {
     const places = await prisma.place.findMany({
-      include: {
-        discoveries: true,
-        scenes: { include: { hotspots: true } },
-        timelinePhotos: true,
-        zones: true,
-        media: true,
-      },
+      select: PLACE_LIST_SELECT,
       orderBy: { name: 'asc' },
     });
 
-    return places.map(mapPlace);
+    return places.map(mapPlaceListItem);
   },
 
   async getPlaceCountByCountry(countryId: string) {

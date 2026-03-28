@@ -141,6 +141,7 @@ export interface Scene {
     description?: string;
     src: string;
     alt?: string;
+    mediaType?: 'image' | 'video';
     hotspots: SceneHotspot[];
 }
 
