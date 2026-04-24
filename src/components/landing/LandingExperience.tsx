@@ -45,7 +45,7 @@ export function LandingExperience({ onEnter }: LandingExperienceProps) {
     const rafRef = useRef(0);
     const idleRef = useRef(0);
 
-    const { initialize, isInitialized, playAmbient, isEnabled } = useSound();
+    const { initialize, isInitialized, playAmbient, setEnabled } = useSound();
 
     const activePlace = PLACES.find(p => p.id === activePlaceId)!;
 
@@ -117,9 +117,10 @@ export function LandingExperience({ onEnter }: LandingExperienceProps) {
     const handleEnter = useCallback(async () => {
         setIsExiting(true);
         if (!isInitialized) await initialize();
-        if (isEnabled) await playAmbient('default', 1500);
+        setEnabled(true);
+        await playAmbient('default', 1500);
         setTimeout(() => onEnter(), 800);
-    }, [initialize, isInitialized, playAmbient, isEnabled, onEnter]);
+    }, [initialize, isInitialized, playAmbient, setEnabled, onEnter]);
 
     const activate = (id: string) => {
         setActivePlaceId(id);
