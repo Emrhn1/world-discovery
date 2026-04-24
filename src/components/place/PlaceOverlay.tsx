@@ -2,13 +2,16 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '@/lib/utils';
 import { useLearnedPlaces } from '@/hooks/useLearnedPlaces';
+import { useMapReactions } from '@/hooks/useMapReactions';
 import { useSound } from '@/hooks/useSound';
 import { PhotoExplorer } from './PhotoExplorer';
 import { TimelineViewer } from './TimelineViewer';
+import { DiscoveryCard } from './DiscoveryCard';
+import { ProgressRail } from './ProgressRail';
+import { LearnedButton } from './LearnedButton';
 import { ContextMenu } from '@/components/ui/ContextMenu';
-import type { Place, Scene, SceneHotspot } from '@/types';
+import type { Place, Scene, SceneHotspot, Discovery, DiscoveryType } from '@/types';
 
 interface PlaceSceneProps {
     place: Place;
@@ -16,103 +19,101 @@ interface PlaceSceneProps {
 }
 
 type ScenePhase = 'intro' | 'title' | 'explore';
+type CardPhase = 'hook' | 'reveal' | 'interaction';
 
-/**
- * Helper: Convert legacy discovery/bullets data to modern scene format
- */
 function generateScenesFromPlace(place: Place): Scene[] {
-    // If place already has scenes, use them
-    if (place.scenes && place.scenes.length > 0) {
-        return place.scenes;
-    }
+    if (place.scenes && place.scenes.length > 0) return place.scenes;
 
-    // Otherwise, generate scenes from media and discoveries/bullets
-    const scenes: Scene[] = [];
-    
-    // Get discoveries or fallback to bullets
     const discoveries = place.discoveries || place.bullets.map((bullet, i) => ({
         hook: bullet,
         story: place.shortStory || bullet,
-        type: (i === 0 ? 'turning-point' : 'historical-insight') as const,
+        type: (i === 0 ? 'turning-point' : 'historical-insight') as DiscoveryType,
         isHero: i === 0,
-        position: undefined, // Explicitly set position as undefined for generated discoveries
+        position: undefined,
     }));
 
-    // Get media items
     const mediaItems = place.media || [];
-    
-    // Create one scene per media item (or at least one scene)
     const numScenes = Math.max(mediaItems.length, 1);
-    
-    for (let i = 0; i < numScenes; i++) {
+
+    const hotspotPositions = [
+        { top: '25%', left: '20%' },
+        { top: '35%', left: '60%' },
+        { top: '55%', left: '35%' },
+        { top: '65%', left: '75%' },
+        { top: '45%', left: '80%' },
+    ];
+
+    return Array.from({ length: numScenes }, (_, i) => {
         const media = mediaItems[i];
-        
-        // Distribute discoveries across scenes as hotspots
-        const discoveriesForThisScene = discoveries.filter((_, idx) => 
-            idx % numScenes === i
-        );
+        const discoveriesForScene = discoveries.filter((_, idx) => idx % numScenes === i);
 
-        // Position hotspots in a visually pleasing pattern
-        const hotspotPositions = [
-            { top: '25%', left: '20%' },
-            { top: '35%', left: '60%' },
-            { top: '55%', left: '35%' },
-            { top: '65%', left: '75%' },
-            { top: '45%', left: '80%' },
-        ];
-
-        const hotspots: SceneHotspot[] = discoveriesForThisScene.map((disc, idx) => {
-            // Safely access position property
-            const position = ('position' in disc && disc.position) 
-                ? disc.position 
+        const hotspots: SceneHotspot[] = discoveriesForScene.map((disc, idx) => {
+            const position = ('position' in disc && disc.position)
+                ? disc.position
                 : hotspotPositions[idx % hotspotPositions.length];
-            
+
             return {
                 id: `hotspot-${i}-${idx}`,
-                position: position,
-                icon: place.type === 'historical' ? '🏛️' : 
-                      place.type === 'nature' ? '🌿' : '🏙️',
-                title: typeof disc.hook === 'string' ? disc.hook : disc.hook || 'Discovery',
-                description: typeof disc.story === 'string' ? disc.story : disc.story || '',
+                position,
+                icon: place.type === 'historical' ? '🏛️' : place.type === 'nature' ? '🌿' : '🏙️',
+                title: disc.hook,
+                description: disc.story,
                 type: disc.type,
             };
         });
 
-        scenes.push({
+        return {
             id: `scene-${i}`,
             title: media?.alt || `View ${i + 1}`,
             description: i === 0 ? place.shortStory : undefined,
             src: media?.src || 'https://images.unsplash.com/photo-1541410965313-d53b3c16ef17',
             alt: media?.alt || place.name,
             hotspots,
-        });
-    }
-
-    return scenes;
+        };
+    });
 }
 
-/**
- * Cinematic Place Scene - Always uses PhotoExplorer with scenes
- */
 export function PlaceOverlay({ place, onClose }: PlaceSceneProps) {
     const [phase, setPhase] = useState<ScenePhase>('intro');
+    const [discoveredIndexes, setDiscoveredIndexes] = useState<Set<number>>(new Set());
+    const [revealedHiddenIndexes, setRevealedHiddenIndexes] = useState<Set<number>>(new Set());
+    const [activeDiscoveryIndex, setActiveDiscoveryIndex] = useState<number | null>(null);
+
     const { isLearned, markAsLearned } = useLearnedPlaces();
+    const { onDiscoveryPhase, dimMap } = useMapReactions();
     const { playUI, playAmbient, isEnabled } = useSound();
     const alreadyLearned = isLearned(place.id);
 
-    // Generate or use existing scenes
     const scenes = useMemo(() => generateScenesFromPlace(place), [place]);
     const hasTimeline = !!(place.timelinePhotos && place.timelinePhotos.length > 0);
 
-    // Start ambient sound
+    // Only overlay discoveries when place has proper scenes (avoid double-rendering in fallback)
+    const discoveries: Discovery[] = useMemo(
+        () => (place.scenes && place.scenes.length > 0 ? (place.discoveries ?? []) : []),
+        [place]
+    );
+
+    const hasHiddenSecrets = discoveries.some((d, i) => d.isHidden && !revealedHiddenIndexes.has(i));
+
+    // Auto-unlock chain discoveries when their prerequisites are satisfied
+    useEffect(() => {
+        if (!discoveries.length) return;
+        setRevealedHiddenIndexes(prev => {
+            const next = new Set(prev);
+            discoveries.forEach((disc, i) => {
+                if (disc.isHidden && disc.hiddenTrigger === 'chain') {
+                    const ready = (disc.chainRequires ?? []).every(j => discoveredIndexes.has(j));
+                    if (ready) next.add(i);
+                }
+            });
+            return next;
+        });
+    }, [discoveredIndexes, discoveries]);
+
     useEffect(() => {
         if (phase !== 'explore' || !isEnabled) return;
-        
-        // Safely determine ambience type
-        const ambienceType = (place.ambience as 'ancient' | 'nature' | 'city' | 'default') || 
-            (place.type === 'nature' ? 'nature' :
-             place.type === 'city' ? 'city' : 'ancient');
-        
+        const ambienceType = (place.ambience as 'ancient' | 'nature' | 'city' | 'default') ||
+            (place.type === 'nature' ? 'nature' : place.type === 'city' ? 'city' : 'ancient');
         playAmbient(ambienceType, 1500);
     }, [phase, isEnabled, place.ambience, place.type, playAmbient]);
 
@@ -124,14 +125,47 @@ export function PlaceOverlay({ place, onClose }: PlaceSceneProps) {
         return () => clearTimeout(timer);
     }, [phase]);
 
-    const handleLearn = () => {
+    const handleDiscoveryOpen = useCallback((index: number) => {
+        setActiveDiscoveryIndex(index);
+        if (isEnabled) playUI('click');
+    }, [isEnabled, playUI]);
+
+    const handleRevealHidden = useCallback((index: number) => {
+        setRevealedHiddenIndexes(prev => new Set(prev).add(index));
+    }, []);
+
+    const handleDiscoveryComplete = useCallback(() => {
+        if (activeDiscoveryIndex !== null) {
+            setDiscoveredIndexes(prev => new Set(prev).add(activeDiscoveryIndex));
+        }
+        setActiveDiscoveryIndex(null);
+        dimMap(false);
+        if (isEnabled) playUI('success');
+    }, [activeDiscoveryIndex, dimMap, isEnabled, playUI]);
+
+    const handleDiscoveryClose = useCallback(() => {
+        setActiveDiscoveryIndex(null);
+        dimMap(false);
+    }, [dimMap]);
+
+    const handleMapReaction = useCallback((cardPhase: CardPhase) => {
+        onDiscoveryPhase(cardPhase, place.coords);
+    }, [onDiscoveryPhase, place.coords]);
+
+    const handleLearn = useCallback(() => {
         if (alreadyLearned) return;
         markAsLearned(place.id);
         if (isEnabled) playUI('success');
-    };
+    }, [alreadyLearned, markAsLearned, place.id, isEnabled, playUI]);
 
-    const typeIcon = place.type === 'historical' ? '🏛️' :
-        place.type === 'nature' ? '🌿' : '🏙️';
+    const typeIcon = place.type === 'historical' ? '🏛️' : place.type === 'nature' ? '🌿' : '🏙️';
+
+    const heroIndex = discoveries.findIndex(d => d.isHero);
+    const hints = discoveries.map(d => d.hook.slice(0, 30));
+    const visibleTotal = discoveries.filter((d, i) => !d.isHidden || revealedHiddenIndexes.has(i)).length;
+    const placeImage = place.scenes?.[0]?.src ?? place.media?.[0]?.src;
+
+    const activeDiscovery = activeDiscoveryIndex !== null ? discoveries[activeDiscoveryIndex] : null;
 
     return (
         <motion.div
@@ -140,10 +174,8 @@ export function PlaceOverlay({ place, onClose }: PlaceSceneProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
         >
-            {/* BACKDROP */}
             <div className="absolute inset-0 bg-neutral-950" />
 
-            {/* PHASES */}
             <AnimatePresence mode="wait">
                 {/* INTRO PHASE */}
                 {phase === 'intro' && (
@@ -176,7 +208,7 @@ export function PlaceOverlay({ place, onClose }: PlaceSceneProps) {
                                 transition={{ delay: 0.7 }}
                             >
                                 {place.type === 'historical' ? 'Historical Site' :
-                             place.type === 'nature' ? 'Natural Wonder' : 'City Exploration'}
+                                    place.type === 'nature' ? 'Natural Wonder' : 'City Exploration'}
                             </motion.p>
                             <motion.h2
                                 className="font-display text-4xl text-white mb-4"
@@ -231,7 +263,7 @@ export function PlaceOverlay({ place, onClose }: PlaceSceneProps) {
                     </motion.div>
                 )}
 
-                {/* EXPLORE PHASE - PhotoExplorer with scenes */}
+                {/* EXPLORE PHASE */}
                 {phase === 'explore' && (
                     <motion.div
                         key="explore"
@@ -240,10 +272,17 @@ export function PlaceOverlay({ place, onClose }: PlaceSceneProps) {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                     >
-                        {/* PhotoExplorer - main scene viewer */}
-                        <PhotoExplorer scenes={scenes} />
+                        {/* PhotoExplorer with discovery overlay */}
+                        <PhotoExplorer
+                            scenes={scenes}
+                            discoveries={discoveries}
+                            discoveredIndexes={discoveredIndexes}
+                            revealedHiddenIndexes={revealedHiddenIndexes}
+                            onDiscoveryOpen={handleDiscoveryOpen}
+                            onRevealHidden={handleRevealHidden}
+                        />
 
-                        {/* Timeline Viewer (if timeline data exists) */}
+                        {/* Timeline Viewer */}
                         {hasTimeline && (
                             <TimelineViewer
                                 photos={place.timelinePhotos!}
@@ -275,31 +314,59 @@ export function PlaceOverlay({ place, onClose }: PlaceSceneProps) {
                             <span className="text-xl">×</span>
                         </motion.button>
 
-                        {/* Learn button (if not already learned) */}
-                        {!alreadyLearned && (
-                            <motion.button
-                                className="absolute bottom-8 right-8 px-6 py-3 bg-accent-500 hover:bg-accent-400 text-neutral-900 font-semibold rounded-full transition-colors shadow-lg z-40"
-                                onClick={handleLearn}
-                                initial={{ y: 30, opacity: 0, scale: 0.9 }}
-                                animate={{ y: 0, opacity: 1, scale: 1 }}
-                                transition={{ delay: 0.6 }}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                💡 Mark as Learned
-                            </motion.button>
-                        )}
-
-                        {alreadyLearned && (
+                        {/* Progress Rail (right-center) — only if place has discoveries */}
+                        {discoveries.length > 0 && (
                             <motion.div
-                                className="absolute bottom-8 right-8 px-6 py-3 bg-green-500/20 border border-green-500/30 text-green-400 rounded-full z-40"
-                                initial={{ scale: 0 }}
-                                animate={{ scale: 1 }}
+                                className="absolute right-6 top-1/2 -translate-y-1/2 z-40"
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.7 }}
                             >
-                                ✓ Learned
+                                <ProgressRail
+                                    total={discoveries.length}
+                                    visibleTotal={visibleTotal}
+                                    discovered={discoveredIndexes}
+                                    heroIndex={heroIndex >= 0 ? heroIndex : 0}
+                                    onStepClick={handleDiscoveryOpen}
+                                    hints={hints}
+                                    discoveries={discoveries}
+                                    hiddenRevealed={revealedHiddenIndexes}
+                                    hasHiddenSecrets={hasHiddenSecrets}
+                                />
                             </motion.div>
                         )}
+
+                        {/* Learn button */}
+                        <motion.div
+                            className="absolute bottom-8 right-20 z-40"
+                            initial={{ y: 30, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.8 }}
+                        >
+                            <LearnedButton
+                                isLearned={alreadyLearned}
+                                onLearn={handleLearn}
+                                className="min-w-[180px]"
+                            />
+                        </motion.div>
                     </motion.div>
+                )}
+            </AnimatePresence>
+
+            {/* DiscoveryCard modal — on top of everything */}
+            <AnimatePresence>
+                {phase === 'explore' && activeDiscovery !== null && activeDiscoveryIndex !== null && (
+                    <DiscoveryCard
+                        key={`discovery-${activeDiscoveryIndex}`}
+                        discovery={activeDiscovery}
+                        index={activeDiscoveryIndex}
+                        total={discoveries.length}
+                        discovered={discoveredIndexes.size}
+                        placeImage={placeImage}
+                        onComplete={handleDiscoveryComplete}
+                        onClose={handleDiscoveryClose}
+                        onMapReaction={handleMapReaction}
+                    />
                 )}
             </AnimatePresence>
         </motion.div>
