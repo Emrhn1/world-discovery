@@ -2,16 +2,16 @@ import type { AmbienceType, SoundState } from '@/types';
 
 // Sound file paths
 const AMBIENT_SOUNDS: Record<AmbienceType, string> = {
-    nature: '/sounds/ambient/nature.mp3',
-    city: '/sounds/ambient/city.mp3',
-    ancient: '/sounds/ambient/ancient.mp3',
-    default: '/sounds/ambient/default.mp3',
+    nature: '/sounds/ambient/nature.wav',
+    city: '/sounds/ambient/city.wav',
+    ancient: '/sounds/ambient/ancient.wav',
+    default: '/sounds/ambient/default.wav',
 };
 
 const UI_SOUNDS = {
-    hover: '/sounds/ui/hover.mp3',
-    click: '/sounds/ui/click.mp3',
-    success: '/sounds/ui/success.mp3',
+    hover: '/sounds/ui/hover.wav',
+    click: '/sounds/ui/click.wav',
+    success: '/sounds/ui/success.wav',
 } as const;
 
 type UISoundType = keyof typeof UI_SOUNDS;
@@ -357,6 +357,13 @@ class SoundManager {
      */
     public isEnabled(): boolean {
         return this.state.enabled;
+    }
+
+    /**
+     * Check if AudioContext has been created (i.e. initialize() was already called)
+     */
+    public isReady(): boolean {
+        return this.audioContext !== null;
     }
 
     /**

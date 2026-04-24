@@ -12,6 +12,9 @@ export function useSound() {
     const [isEnabled, setIsEnabled] = useState(false);
     const [volume, setVolumeState] = useState(0.7);
     const [isInitialized, setIsInitialized] = useState(false);
+    // Ref so playAmbient/playUI callbacks always see the fresh value without needing to
+    // be recreated after each initialize() call (avoids stale-closure bug).
+    const isInitializedRef = useRef(false);
 
     // Initialize sound manager
     useEffect(() => {
@@ -19,6 +22,12 @@ export function useSound() {
         const state = soundManagerRef.current.getState();
         setIsEnabled(state.enabled);
         setVolumeState(state.volume);
+        // If AudioContext was already created by another component (e.g. LandingExperience),
+        // mark this hook instance as initialized so playAmbient/playUI work immediately.
+        if (soundManagerRef.current.isReady()) {
+            isInitializedRef.current = true;
+            setIsInitialized(true);
+        }
 
         return () => {
             // Don't dispose on unmount - keep singleton alive
@@ -30,6 +39,7 @@ export function useSound() {
         if (!soundManagerRef.current) return;
 
         await soundManagerRef.current.initialize();
+        isInitializedRef.current = true;
         setIsInitialized(true);
 
         // Update state after initialization
@@ -65,10 +75,10 @@ export function useSound() {
 
     // Play ambient
     const playAmbient = useCallback(async (type: AmbienceType, crossfade = 2000) => {
-        if (!soundManagerRef.current || !isInitialized) return;
+        if (!soundManagerRef.current || !isInitializedRef.current) return;
 
         await soundManagerRef.current.playAmbient(type, crossfade);
-    }, [isInitialized]);
+    }, []);
 
     // Stop ambient
     const stopAmbient = useCallback((fade = 1000) => {
@@ -79,10 +89,10 @@ export function useSound() {
 
     // Play UI sound
     const playUI = useCallback(async (type: UISoundType) => {
-        if (!soundManagerRef.current || !isInitialized) return;
+        if (!soundManagerRef.current || !isInitializedRef.current) return;
 
         await soundManagerRef.current.playUI(type);
-    }, [isInitialized]);
+    }, []);
 
     return {
         isEnabled,
