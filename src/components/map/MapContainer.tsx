@@ -6,11 +6,12 @@ import 'leaflet/dist/leaflet.css';
 import { getCountriesAsync, getPlacesByCountryAsync } from '@/lib/dataAsync';
 import { cn } from '@/lib/utils';
 import { useMapReactions } from '@/hooks/useMapReactions';
+import { attachHistoricalRoutes, type HistoricalRoutesHandle } from './historicalRoutes';
 import type { Country, Place } from '@/types';
 
-// Custom dark map style
-// Light colorful map style with beautiful water colors
-const TILE_LAYER = 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png';
+// Dark cinematic map — matches the deep-space landing aesthetic and lets gold routes/ships glow
+const TILE_LAYER = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png';
+const TILE_FALLBACK = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
 const TILE_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>';
 
 interface MapContainerProps {
@@ -67,6 +68,7 @@ export function MapContainer({
     const mapRef = useRef<HTMLDivElement>(null);
     const mapInstanceRef = useRef<L.Map | null>(null);
     const markersRef = useRef<L.LayerGroup | null>(null);
+    const routesHandleRef = useRef<HistoricalRoutesHandle | null>(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [countriesData, setCountriesData] = useState<Country[]>([]);
     const [placesData, setPlacesData] = useState<Place[]>([]);
@@ -85,12 +87,26 @@ export function MapContainer({
             preferCanvas: true,
         });
 
-        // Add tile layer
-        L.tileLayer(TILE_LAYER, {
+        // Add tile layer with automatic OSM fallback if CARTO CDN fails
+        const tileLayer = L.tileLayer(TILE_LAYER, {
             attribution: TILE_ATTRIBUTION,
             maxZoom: 18,
             minZoom: 2,
+            subdomains: 'abcd',
         }).addTo(map);
+
+        let fellBack = false;
+        tileLayer.on('tileerror', () => {
+            if (fellBack) return;
+            fellBack = true;
+            console.warn('[MapContainer] CARTO tiles failed, falling back to OSM');
+            map.removeLayer(tileLayer);
+            L.tileLayer(TILE_FALLBACK, {
+                attribution: TILE_ATTRIBUTION,
+                maxZoom: 19,
+                minZoom: 2,
+            }).addTo(map);
+        });
 
         // Add zoom control to bottom right
         L.control.zoom({ position: 'bottomright' }).addTo(map);
@@ -98,11 +114,16 @@ export function MapContainer({
         // Create marker layer group
         markersRef.current = L.layerGroup().addTo(map);
 
+        // Attach animated historical routes + ships (Silk Road, Spice Route, Viking, Columbus, Magellan)
+        routesHandleRef.current = attachHistoricalRoutes(map);
+
         mapInstanceRef.current = map;
         setMapInstance(map);
         setIsLoaded(true);
 
         return () => {
+            routesHandleRef.current?.detach();
+            routesHandleRef.current = null;
             map.remove();
             mapInstanceRef.current = null;
             setMapInstance(null);
@@ -119,6 +140,11 @@ export function MapContainer({
             easeLinearity: 0.25,
         });
     }, [center, zoom]);
+
+    // Hide historical routes when focused on a country (they clutter at close zoom)
+    useEffect(() => {
+        routesHandleRef.current?.setVisible(!(selectedCountry && highlightPlaces));
+    }, [selectedCountry, highlightPlaces]);
 
     // Load data (DB/hybrid via repository)
     useEffect(() => {
@@ -262,6 +288,29 @@ export function MapContainer({
         .custom-marker {
           background: transparent !important;
           border: none !important;
+        }
+
+        /* Historical routes — marching ants dashed line */
+        @keyframes historical-route-march {
+          to { stroke-dashoffset: -24; }
+        }
+        .historical-route-line {
+          animation: historical-route-march 4s linear infinite;
+          transition: opacity .4s;
+        }
+        .historical-route-line:hover {
+          opacity: 0.9 !important;
+          stroke-width: 2.5 !important;
+        }
+
+        /* Ship / caravan marker — transparent background, gentle bob */
+        .historical-ship {
+          background: transparent !important;
+          border: none !important;
+        }
+        @keyframes historical-ship-bob {
+          0%, 100% { transform: translateY(0); }
+          50%      { transform: translateY(-2px); }
         }
       `}</style>
         </div>
