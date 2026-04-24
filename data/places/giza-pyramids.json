@@ -2,10 +2,7 @@
     "id": "giza-pyramids",
     "name": "Pyramids of Giza",
     "countryId": "EG",
-    "coords": [
-        29.9792,
-        31.1342
-    ],
+    "coords": [29.9792, 31.1342],
     "type": "historical",
     "teaser": "Mountains built by human hands for eternity",
     "shortStory": "For 4,500 years, these monuments have guarded the desert. The Great Pyramid was the world's tallest structure for 3,800 years. How ancient Egyptians built them without modern machinery remains one of history's greatest mysteries.",
@@ -14,6 +11,126 @@
         "Originally covered in white limestone",
         "Aligned with incredible precision",
         "Only surviving Ancient Wonder"
+    ],
+    "discoveries": [
+        {
+            "hook": "The pyramid was once blindingly white.",
+            "story": "The Great Pyramid was originally covered in 21,000 smooth white Tura limestone casing stones, each polished to a mirror finish. From miles away it reflected sunlight like a mountain of fire. Over centuries, earthquakes loosened them and medieval builders quarried them for Cairo's mosques. What you see today is the bare inner core.",
+            "type": "hidden-detail",
+            "isHero": true,
+            "position": { "top": "30%", "left": "45%" }
+        },
+        {
+            "hook": "The builders were paid craftsmen — not slaves.",
+            "story": "Ancient graffiti found inside workers' tunnels names their crews: 'Friends of Khufu' and 'Drunkards of Menkaure.' Excavated workers' villages show they ate well — beef, fish, fresh bread. They had doctors. Healed fractures in their skeletons prove it. Hollywood's slave-labor narrative is completely wrong.",
+            "type": "cultural-shift",
+            "position": { "top": "65%", "left": "62%" }
+        },
+        {
+            "hook": "They left a sealed stone door 65 meters inside the pyramid.",
+            "story": "In 2002, a robotic camera threaded through an ancient shaft finally reached a sealed limestone door with two copper handles. Behind it: another sealed door. Behind that — unknown. The chambers remain unopened. Scanning technology shows two hidden rooms. No one has yet turned the handle.",
+            "type": "engineering-mystery",
+            "isHidden": true,
+            "hiddenTrigger": "double-click",
+            "position": { "top": "50%", "left": "22%" }
+        },
+        {
+            "hook": "The pyramid points to the stars with impossible accuracy.",
+            "story": "The Great Pyramid's four sides face true north, south, east, and west with an error of just 0.05 degrees — more accurate than the meridian line at the Paris Observatory. Its internal shafts point precisely at Orion's Belt and the circumpolar stars. This alignment was almost certainly intentional, and the knowledge required to achieve it is still not fully understood.",
+            "type": "historical-insight",
+            "isHidden": true,
+            "hiddenTrigger": "chain",
+            "chainRequires": [0, 1],
+            "position": { "top": "18%", "left": "72%" }
+        }
+    ],
+    "scenes": [
+        {
+            "id": "plateau-view",
+            "title": "The Giza Plateau",
+            "description": "Three pyramids rise from the desert — each a perfect mathematical statement.",
+            "src": "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?w=1920&q=80",
+            "alt": "Pyramids of Giza at sunset",
+            "hotspots": [
+                {
+                    "id": "giza-great-pyramid",
+                    "position": { "top": "25%", "left": "30%" },
+                    "icon": "🔺",
+                    "title": "The Great Pyramid of Khufu",
+                    "description": "Built around 2560 BC, it stood 146.5 meters tall — the world's tallest man-made structure for 3,800 years. It contains 2.3 million stone blocks averaging 2.5 tons each. The base is level to within 2.1 cm across 230 meters. Ancient precision remains astonishing.",
+                    "type": "engineering-mystery"
+                },
+                {
+                    "id": "giza-khafre",
+                    "position": { "top": "30%", "left": "55%" },
+                    "icon": "🏔️",
+                    "title": "The Pyramid of Khafre",
+                    "description": "Khafre's pyramid appears taller than the Great Pyramid, but it sits on higher ground. The original limestone casing still crowns its peak — a ghost of how all three once looked. The Sphinx directly in front of it may bear Khafre's face.",
+                    "type": "historical-insight"
+                },
+                {
+                    "id": "giza-alignment",
+                    "position": { "top": "55%", "left": "75%" },
+                    "icon": "⭐",
+                    "title": "The Orion Alignment",
+                    "description": "The three pyramids mirror the three belt stars of Orion's constellation — including the slight diagonal offset. The ancient Egyptians called Orion the 'soul of Osiris,' god of resurrection. The Nile mirrors the Milky Way. Whether this was intentional remains fiercely debated.",
+                    "type": "turning-point"
+                }
+            ]
+        },
+        {
+            "id": "sphinx-guardian",
+            "title": "The Sphinx — Guardian of the Desert",
+            "description": "The largest monolith statue on Earth watches the rising sun and guards the plateau.",
+            "src": "https://images.unsplash.com/photo-1539650116574-8efeb43e2750?w=1920&q=80",
+            "alt": "Sphinx with pyramids in background",
+            "hotspots": [
+                {
+                    "id": "sphinx-face",
+                    "position": { "top": "25%", "left": "45%" },
+                    "icon": "👁️",
+                    "title": "The Missing Nose",
+                    "description": "The Sphinx lost its nose long before Napoleon — medieval Arab records describe it being deliberately chiseled off in the 14th century by a Sufi preacher who considered it idolatrous. A fragment matching its color was found nearby. Napoleon is innocent of this one.",
+                    "type": "historical-insight"
+                },
+                {
+                    "id": "sphinx-body",
+                    "position": { "top": "55%", "left": "30%" },
+                    "icon": "🌊",
+                    "title": "The Water Erosion Mystery",
+                    "description": "Geologist Robert Schoch caused controversy by identifying water erosion patterns on the Sphinx's body — not from wind and sand, but from heavy rainfall. The last time Giza experienced such rainfall was over 10,000 years ago. If correct, the Sphinx is far older than Egyptologists believe.",
+                    "type": "engineering-mystery"
+                },
+                {
+                    "id": "sphinx-dream",
+                    "position": { "top": "68%", "left": "65%" },
+                    "icon": "💭",
+                    "title": "The Dream Stele",
+                    "description": "Between the paws of the Sphinx stands a pink granite tablet from 1400 BC. It records a dream of Prince Thutmose: the Sphinx appeared to him buried to its neck in sand, and promised him the throne of Egypt if he cleared it. He did. He became Thutmose IV.",
+                    "type": "cultural-shift"
+                }
+            ]
+        }
+    ],
+    "timelinePhotos": [
+        {
+            "era": "Old Kingdom",
+            "year": -2560,
+            "src": "https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=800&q=80",
+            "description": "Pharaoh Khufu commissions the Great Pyramid. 20,000 skilled workers labor for 20 years. The pyramid is cased in blazing white limestone and topped with an electrum-gilded capstone that catches the first and last light of day."
+        },
+        {
+            "era": "New Kingdom",
+            "year": -1400,
+            "src": "https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=800&q=80",
+            "description": "Prince Thutmose clears sand from the Sphinx and erects the Dream Stele. Giza becomes a major pilgrimage site for Egyptians. The pyramids are ancient even to the ancient Egyptians — already 1,000 years old."
+        },
+        {
+            "era": "Modern Excavation",
+            "year": 1925,
+            "src": "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80",
+            "description": "Archaeologists begin systematic excavation of Giza. The workers' village is discovered in 1990, dismantling the slave-labor myth. In 2002, a robotic camera enters sealed pyramid shafts. In 2017, cosmic-ray imaging reveals a hidden void inside the Great Pyramid."
+        }
     ],
     "media": [
         {

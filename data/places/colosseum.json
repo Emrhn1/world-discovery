@@ -58,6 +58,74 @@
             "position": { "top": "48%", "left": "15%" }
         }
     ],
+    "scenes": [
+        {
+            "id": "exterior",
+            "title": "Exterior — The Arena of Empires",
+            "description": "80 arched entrances once welcomed 50,000 spectators in under 15 minutes.",
+            "src": "https://images.unsplash.com/photo-1555992828-ca4dbe41d294?w=1920&q=80",
+            "alt": "Colosseum exterior at night",
+            "hotspots": [
+                {
+                    "id": "ext-arches",
+                    "position": { "top": "45%", "left": "30%" },
+                    "icon": "🏛️",
+                    "title": "The 80 Numbered Arches",
+                    "description": "Each of the 80 arched entrances was numbered — spectators' tickets matched their arch. This crowd-management system allowed 50,000 people to fill their seats in under 15 minutes. Roman engineers invented modern stadium logic.",
+                    "type": "engineering-mystery"
+                },
+                {
+                    "id": "ext-tiers",
+                    "position": { "top": "30%", "left": "60%" },
+                    "icon": "👑",
+                    "title": "Strict Social Hierarchy",
+                    "description": "Seating was arranged by social class. Emperor in the front royal box. Senators next. Then knights, citizens, foreigners, slaves, and women — in that order, from front to back. Even in entertainment, Rome enforced its rigid hierarchy.",
+                    "type": "cultural-shift"
+                },
+                {
+                    "id": "ext-damage",
+                    "position": { "top": "60%", "left": "70%" },
+                    "icon": "⚡",
+                    "title": "The Missing Half",
+                    "description": "A major earthquake in 1349 collapsed much of the south side. Medieval Romans then quarried the fallen stones to build churches and palaces across Rome — including parts of St. Peter's Basilica. The Colosseum became a quarry for 400 years.",
+                    "type": "turning-point"
+                }
+            ]
+        },
+        {
+            "id": "interior",
+            "title": "Interior — The Golden Hour",
+            "description": "Where gladiators, animals, and emperors converged in one of history's most complex performance spaces.",
+            "src": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1920&q=80",
+            "alt": "Colosseum interior at golden hour",
+            "hotspots": [
+                {
+                    "id": "int-arena-floor",
+                    "position": { "top": "55%", "left": "50%" },
+                    "icon": "⚔️",
+                    "title": "The Wooden Arena Floor",
+                    "description": "The word 'arena' comes from the Latin 'harena' — sand. The wooden floor was covered with sand to absorb the blood. It could be rapidly removed to reveal the hypogeum below, or flooded for naval battles. Roman stagecraft was extraordinary.",
+                    "type": "historical-insight"
+                },
+                {
+                    "id": "int-tiered-seating",
+                    "position": { "top": "25%", "left": "35%" },
+                    "icon": "🎭",
+                    "title": "The Missing Seats",
+                    "description": "All 50,000 marble seating slabs were stripped away over centuries. Medieval builders found them perfectly sized for other constructions. What you see today — bare brick and concrete — was once covered in gleaming white marble and colored frescoes.",
+                    "type": "hidden-detail"
+                },
+                {
+                    "id": "int-royal-box",
+                    "position": { "top": "40%", "left": "75%" },
+                    "icon": "🏆",
+                    "title": "The Emperor's Box",
+                    "description": "The Emperor sat in a special podium with a perfect 180° view of all the action. His reactions determined life and death. If he turned his back or left early, the show had failed. Emperors were judged by how spectacular their games were.",
+                    "type": "cultural-shift"
+                }
+            ]
+        }
+    ],
     "media": [
         {
             "type": "image",
