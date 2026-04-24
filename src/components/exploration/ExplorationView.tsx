@@ -7,6 +7,7 @@ import { CountryIntro } from '@/components/country/CountryIntro';
 import { CountryView } from '@/components/country/CountryView';
 import { PlaceOverlay } from '@/components/place/PlaceOverlay';
 import { SoundToggle } from '@/components/ui/SoundToggle';
+import { PassportBadge } from '@/components/ui/PassportBadge';
 import { useSound } from '@/hooks/useSound';
 import { getCountryByIdAsync, getPlaceByIdAsync } from '@/lib/dataAsync';
 import type { Country, Place } from '@/types';
@@ -219,7 +220,8 @@ export function ExplorationView() {
                         </AnimatePresence>
 
                         {/* UI Controls - always visible */}
-                        <div className="absolute top-6 right-6 z-30">
+                        <div className="absolute top-6 right-6 z-30 flex items-center gap-2">
+                            <PassportBadge />
                             <SoundToggle showLabel={false} />
                         </div>
 
